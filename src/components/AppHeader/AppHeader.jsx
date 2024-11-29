@@ -20,7 +20,7 @@ const AppHeader = () => {
         </ul>
       </nav>
 
-      {/* Top container (content below header) */}
+   
       <div className="top-container">
         <p>Here is your main content area!</p>
       </div>
