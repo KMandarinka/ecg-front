@@ -1,0 +1,47 @@
+/* Main container holding the top and bottom sections */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full screen height */
+    padding-top: 80px; /* Add space for the header */
+    box-sizing: border-box;
+  }
+  
+  /* Top section of the main container (below the header) */
+  .top-container {
+    flex: 1; /* Take up remaining space */
+    background-color: #f0f0f0; /* Light background color */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Bottom section of the main container (contains buttons) */
+  .bottom-container {
+    flex: 0.2; /* Take up 20% of the screen height */
+    background-color: #007AFF; /* Blue background for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Add space between buttons */
+    box-sizing: border-box;
+  }
+  
+  /* Button styles */
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007AFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+  
