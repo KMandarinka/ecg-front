@@ -1,0 +1,78 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000; /* Черный фон */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .login-card {
+    width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Белая карточка с прозрачностью */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Тень */
+    border-radius: 8px;
+    z-index: 10; /* Карточка поверх фона */
+  }
+  
+  .login-title {
+    text-align: center;
+    color: #1890ff;
+  }
+  
+  .login-form-button {
+    width: 100%;
+  }
+  
+  /* ЭКГ-анимация */
+  .ecg-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .ecg-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: none;
+    animation: draw-ecg 4s linear infinite;
+  }
+  
+  .ecg-path {
+    stroke: #0f0; /* Зеленая линия */
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  @keyframes draw-ecg {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .register-form-button {
+    margin-top: 10px;
+    background-color: #f0f0f0;
+    border-color: #d9d9d9;
+    color: #595959;
+    transition: all 0.3s;
+  }
+  
+  .register-form-button:hover {
+    background-color: #d9d9d9;
+    border-color: #bfbfbf;
+    color: #262626;
+  }
+  

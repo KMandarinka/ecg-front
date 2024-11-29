@@ -1,0 +1,35 @@
+/* Кастомизация хедера */
+.custom-header {
+    background: #001529; /* Цвет фона */
+    padding: 0 20px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .search-input {
+    width: 200px;
+    border-radius: 8px;
+  }
+  
+  .user-avatar {
+    background-color: #1890ff;
+    cursor: pointer;
+  }
+  
+  /* Позиционирование элементов в Header */
+  .ant-row {
+    width: 100%;
+  }
+  
+  .ant-col {
+    display: flex;
+    align-items: center;
+  }
+  

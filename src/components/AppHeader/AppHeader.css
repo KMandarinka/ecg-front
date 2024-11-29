@@ -1,0 +1,110 @@
+/* Import Podkova font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
+
+/* Apply the font globally */
+body {
+  font-family: 'Podkova', serif;
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Ensure body takes up full height of the screen */
+}
+
+/* Navbar (Header) styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #C0CAD5;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  margin: 0 auto;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* Logo styles */
+.logo {
+  color: #007AFF;
+  font-size: 51px;
+  font-weight: 900;
+  font-family: 'Podkova', serif;
+  -webkit-text-stroke: 0.0001px aliceblue; /* White stroke */
+  display: flex;
+  align-items: center;
+}
+
+/* SVG icon in the logo */
+.logo-icon {
+  margin-right: 10px;
+  width: 51px;
+  height: 51px;
+}
+
+/* Navigation links styles */
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #007AFF;
+  font-size: 18px;
+  transition: color 0.3s;
+  font-family: 'Podkova', serif;
+}
+
+.navLinks a:hover {
+  color: white;
+}
+
+/* Main container holding the top and bottom sections */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full screen height */
+  padding-top: 80px; /* Add space for the header */
+  box-sizing: border-box;
+}
+
+/* Top section of the main container (below the header) */
+.top-container {
+  flex: 1; /* Take up remaining space */
+  background-color: #f0f0f0; /* Light background color */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bottom section of the main container (contains buttons) */
+.bottom-container {
+  flex: 0.2; /* Take up 20% of the screen height */
+  background-color: #007AFF; /* Blue background for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Add space between buttons */
+  box-sizing: border-box;
+}
+
+/* Button styles */
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007AFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}

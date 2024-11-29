@@ -1,0 +1,119 @@
+/* Общий контейнер */
+.registration-container {
+    height: 100vh; /* Высота 100% от окна браузера */
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+    background-color: #000; /* Чёрный фон */
+    position: relative; /* Для анимации линии */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden; /* Чтобы анимация не выходила за границы */
+  }
+  
+  /* Фон с анимацией линии */
+  .ecg-background {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%; /* Высота линии относительно контейнера */
+    background: transparent;
+  }
+  
+  .ecg-line {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ecg-path {
+    fill: none;
+    stroke: limegreen; /* Цвет линии */
+    stroke-width: 5;
+    stroke-linejoin: round;
+    animation: dash 3s linear infinite;
+  }
+  
+  /* Анимация движения линии */
+  @keyframes dash {
+    from {
+      stroke-dasharray: 0, 400; /* Исчезает */
+    }
+    to {
+      stroke-dasharray: 400, 0; /* Полностью видна */
+    }
+  }
+  
+  /* Контейнер формы */
+  .form-container {
+    display: flex;
+    flex-direction: column; /* Расположение элементов формы по вертикали */
+    align-items: center; /* Центровка элементов по горизонтали */
+    background: #969494; /* Светло-серый фон */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(200, 199, 199, 0.5); /* Плавная тень вокруг формы */
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина формы */
+    z-index: 10; /* Поднимаем форму над фоном */
+    box-sizing: border-box;
+  }
+  
+  /* Стили для заголовков */
+  .form-container h2 {
+    font-weight: bold;
+    color: #0073e6; /* Яркий синий цвет заголовка */
+    margin-bottom: 20px;
+    text-align: center; /* Центровка заголовка */
+  }
+  
+  /* Поля ввода */
+  .ant-input {
+    margin-bottom: 15px; /* Расстояние между полями */
+  }
+  
+  /* Чекбокс */
+  .ant-checkbox-wrapper {
+    margin-bottom: 15px; /* Расстояние от чекбокса до кнопки */
+    text-align: left; /* Текст чекбокса выравнен влево */
+    width: 100%; /* Растягиваем до ширины формы */
+  }
+  
+  /* Кнопка "Войти" */
+  button.ant-btn-primary {
+    background-color: #0073e6; /* Синий цвет кнопки */
+    border-color: #005bb5; /* Темно-синий обвод */
+    transition: all 0.3s ease;
+    width: 100%; /* Растягиваем кнопку на всю ширину */
+    margin-bottom: 10px; /* Отступ между кнопками */
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  button.ant-btn-primary:hover {
+    background-color: #005bb5;
+    border-color: #004494;
+  }
+  
+  button.ant-btn-primary:active {
+    background-color: #003366;
+    border-color: #002244;
+  }
+  
+  /* Кнопка "Регистрация" */
+  .back-to-login-button {
+    margin-top: 10px;
+    background-color: #f0f0f0;
+    border-color: #d9d9d9;
+    color: #595959;
+    transition: all 0.3s;
+    width: 100%; /* Растягиваем кнопку на всю ширину */
+    font-weight: bold;
+  }
+  
+  .back-to-login-button:hover {
+    background-color: #d9d9d9;
+    border-color: #bfbfbf;
+    color: #262626;
+  }
+  
