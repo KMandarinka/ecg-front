@@ -1,37 +1,48 @@
+/* Import Podkova and Bakbak One fonts */
+@import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+
 /* Main container holding the top and bottom sections */
 .main-container {
     display: flex;
     flex-direction: column;
     height: 100vh; /* Full screen height */
-    padding-top: 80px; /* Add space for the header */
     box-sizing: border-box;
-  }
-  
-  /* Top section of the main container (below the header) */
-  .top-container {
-    flex: 1; /* Take up remaining space */
-    background-color: #f0f0f0; /* Light background color */
+    background: linear-gradient(250deg, #86B4F9, #FFFFFF); /* Horizontal gradient (left to right) */
+}
+
+
+/* Top section of the main container (below the header) */
+.top-container {
+    flex: 0 0 60%; /* Take up 60% of the height */
     padding: 20px;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  /* Bottom section of the main container (contains buttons) */
-  .bottom-container {
-    flex: 0.2; /* Take up 20% of the screen height */
-    background-color: #007AFF; /* Blue background for contrast */
+    text-align: center;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    background-color: transparent; /* Make sure background is transparent */
+}
+
+/* Bottom section of the main container (contains buttons) */
+.bottom-container {
+    flex: 0 0 40%; /* Take up 40% of the height */
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px; /* Add space between buttons */
+    padding: 10px;
     box-sizing: border-box;
-  }
-  
-  /* Button styles */
-  .button {
-    padding: 10px 20px;
+    width: 100%; /* Full width of the screen */
+    flex-shrink: 0; /* Prevent this section from shrinking */
+    background-color: transparent; /* Make sure background is transparent */
+}
+
+/* Button styles */
+.button {
+    padding: 20px 40px;
     font-size: 16px;
     color: white;
     background-color: #007AFF;
@@ -39,9 +50,66 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .button:hover {
+    display: flex;
+    flex-direction: column; /* Allow text to stack vertically */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 600px; /* Set width of both buttons */
+    height: 150px; /* Set height of both buttons */
+    box-sizing: border-box; /* Make sure padding does not affect the size */
+}
+
+.button:hover {
     background-color: #005bb5; /* Darker blue on hover */
-  }
-  
+}
+
+.button span {
+    font-family: 'Podkova', serif; /* Apply Podkova font */
+}
+
+.button .first-line {
+    font-size: 45px; /* Size for the first line */
+    font-weight: bold;
+}
+
+.button .second-line {
+    font-size: 35px; /* Size for the second line */
+    font-weight: normal;
+}
+
+/* HeartON text style */
+.hearton-text {
+    font-family: 'Bakbak One', serif; /* Apply Bakbak One font */
+    font-size: 100px; /* Font size of 100px */
+    color: #007AFF; /* Set text color to #007AFF */
+    -webkit-text-stroke: 1px white; /* White text outline with 1px width */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove any default margins */
+}
+
+/* Description text style */
+.description-text {
+    font-family: 'Podkova', serif; /* Apply Podkova font */
+    font-size: 30px; /* Font size of 30px */
+    color: #606367; /* Set text color to #007AFF */
+    text-align: center; /* Center align the text */
+    margin-top: 20px; /* Add some space above the text */
+    font-weight: normal; /* Regular font weight */
+}
+
+/* Ensure spacing between the "HeartON" and the description text */
+.top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60%; /* Occupy 60% of the screen height */
+}
+
+/* Description text styles */
+.first-line, .second-line {
+    display: block; /* Ensure that each line of text is on a new line */
+    text-align: center; /* Center-align the text inside button */
+}
