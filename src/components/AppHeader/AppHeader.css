@@ -31,6 +31,7 @@ body {
   color: #007AFF;
   font-size: 38px;
   font-weight: 900;
+  cursor: pointer; /* Указатель при наведении */
   font-family: 'Bakbak One', sans-serif; /* Apply Bakbak One font */
   -webkit-text-stroke: 0.0001px aliceblue; /* White stroke */
   display: flex;

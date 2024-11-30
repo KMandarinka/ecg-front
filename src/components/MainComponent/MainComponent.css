@@ -14,8 +14,9 @@
 
 /* Top section of the main container (below the header) */
 .top-container {
-    flex: 0 0 60%; /* Take up 60% of the height */
-    padding: 20px;
+    flex: 0 0 40%; /* Take up 30% of the height */
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -25,68 +26,75 @@
     overflow-y: auto; /* Allow scrolling if content overflows */
     background-color: transparent; /* Make sure background is transparent */
 }
-
-/* Bottom section of the main container (contains buttons) */
+/* Контейнер для всех кнопок */
 .bottom-container {
-    flex: 0 0 40%; /* Take up 40% of the height */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Add space between buttons */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    align-items: center; /* Центрируем все элементы по горизонтали */
+    gap: 46px; /* Расстояние между верхними и нижней кнопками */
     padding: 10px;
     box-sizing: border-box;
-    width: 100%; /* Full width of the screen */
-    flex-shrink: 0; /* Prevent this section from shrinking */
-    background-color: transparent; /* Make sure background is transparent */
 }
 
-/* Button styles */
-.button {
-    padding: 20px 40px;
-    font-size: 16px;
-    color: white;
-    background-color: #007AFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Контейнер для двух верхних кнопок */
+.top-buttons-container {
     display: flex;
-    flex-direction: column; /* Allow text to stack vertically */
+    flex-direction: row; /* Горизонтальное расположение верхних кнопок */
+    justify-content: center; /* Центрируем кнопки горизонтально */
+    align-items: center; /* Выравниваем кнопки по вертикали */
+    gap: 50px; /* Расстояние между верхними кнопками */
+}
+
+/* Общие стили для кнопок */
+.button {
+    width: 558.73px; /* Ширина кнопки */
+    height: 176px; /* Высота кнопки */
+    font-size: 16px; /* Размер текста */
+    color: white; /* Цвет текста */
+    background-color: #007AFF; /* Фон кнопки */
+    border: none; /* Без границ */
+    border-radius: 20px; /* Скругленные углы */
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2); /* Тень кнопки */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 600px; /* Set width of both buttons */
-    height: 150px; /* Set height of both buttons */
-    box-sizing: border-box; /* Make sure padding does not affect the size */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
+/* Эффект при наведении */
 .button:hover {
-    background-color: #005bb5; /* Darker blue on hover */
+    background-color: #005bb5;
+    transform: scale(1.05); /* Увеличиваем кнопку при наведении */
 }
 
-.button span {
-    font-family: 'Podkova', serif; /* Apply Podkova font */
-}
-
+/* First line style */
 .button .first-line {
-    font-size: 45px; /* Size for the first line */
+    font-size: 45px; /* Размер первой строки текста */
     font-weight: bold;
+    font-family: 'Podkova', serif; /* Применение шрифта */
 }
 
+/* Second line style */
 .button .second-line {
-    font-size: 35px; /* Size for the second line */
+    font-size: 35px; /* Размер второй строки текста */
     font-weight: normal;
+    font-family: 'Podkova', serif; /* Применение шрифта */
 }
+
 
 /* HeartON text style */
 .hearton-text {
     font-family: 'Bakbak One', serif; /* Apply Bakbak One font */
-    font-size: 100px; /* Font size of 100px */
+    font-size: 120px; /* Font size of 100px */
     color: #007AFF; /* Set text color to #007AFF */
     -webkit-text-stroke: 1px white; /* White text outline with 1px width */
     font-weight: bold; /* Make the text bold */
     text-align: center; /* Center the text */
     margin: 0; /* Remove any default margins */
+    
 }
 
 /* Description text style */
@@ -113,3 +121,91 @@
     display: block; /* Ensure that each line of text is on a new line */
     text-align: center; /* Center-align the text inside button */
 }
+
+/* Контейнер для полосочек и текста */
+.line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Расстояние между полосочками и текстом */
+    position: relative;
+    top: -30px; /* Сдвигаем вверх на 20px */
+   
+}
+
+/* Полосочка */
+.line {
+    width: 155px; /* Длина полосочки */
+    height: 3px; /* Ширина полосочки */
+    background-color: #515974; /* Цвет полосочки */
+}
+
+/* Текст "since 2024" */
+.since-text {
+    font-family: 'French Script MT', cursive; /* Шрифт для текста */
+    font-size: 40px; /* Размер текста */
+    color: #515974; /* Цвет текста */
+    text-align: center; /* Центрируем текст */
+    white-space: nowrap; /* Не позволяем тексту переноситься */
+    
+}
+
+/* Header container with links */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Полная ширина */
+    padding: 30px 40px; /* Отступы внутри */
+    box-sizing: border-box;
+    background-color: transparent; /* Прозрачный фон */
+}
+
+/* Breadcrumb link (left-aligned) */
+.breadcrumb {
+    font-family: 'Podkova', serif; /* Шрифт Podkova */
+    font-size: 24px; /* Размер текста */
+    color: #007AFF; /* Цвет текста */
+    cursor: pointer;
+}
+
+/* Contact link (right-aligned) */
+.contact-link {
+    font-family: 'Frank Ruhl Libre', serif; /* Шрифт Frank Ruhl Libre */
+    font-size: 20px; /* Размер текста */
+    color: #515974; /* Цвет текста */
+    text-align: right; /* Выравнивание текста */
+    cursor: pointer;
+    text-decoration: underline; /* Добавляем подчеркивание */
+    text-decoration-color: #515974; /* Цвет подчеркивания совпадает с текстом */
+    text-decoration-thickness: 1px; /* Толщина линии подчеркивания */
+}
+/* Contact link hover effect */
+.contact-link:hover {
+    color: white; /* Меняем цвет текста на белый при наведении */
+    transition: color 0.3s ease; /* Плавный переход */
+}
+
+/* Стили для кнопки "Как работает программа?" */
+.how-it-works-button {
+    width: 631px; /* Ширина кнопки */
+    height: 99px; /* Высота кнопки */
+    font-size: 32px; /* Размер текста */
+    font-family: 'Podkova', serif; /* Шрифт */
+    color: #454C63; /* Цвет текста */
+    background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный фон */
+    border: 2px solid #007AFF; /* Обводка */
+    border-radius: 50px; /* Скругленные углы */
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5); /* Тень с прозрачностью 50% */
+    transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
+}
+
+/* Эффект при наведении */
+.how-it-works-button:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Уменьшаем прозрачность фона */
+    transform: scale(1.05); /* Увеличиваем кнопку при наведении */
+}
+
+
