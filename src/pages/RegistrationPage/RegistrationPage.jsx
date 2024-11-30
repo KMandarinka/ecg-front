@@ -1,134 +1,74 @@
-import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Typography, message, Card } from "antd";
-import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom"; // Для навигации
-import "./RegistrationPage.css";
+import React from "react";
+import "../RegistrationPage/RegistrationPage.css"; // Импорт стилей
+import { ReactComponent as LogoIcon } from "../../assets/Vector.svg"; // Путь к вашему SVG логотипу
 
-const { Title } = Typography;
-
-const RegistrationPage = () => {
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Хук для навигации
-
-  const onFinish = (values) => {
-    console.log("Received values:", values);
-    setLoading(true);
-
-    // Заглушка для проверки
-    setTimeout(() => {
-      setLoading(false);
-      message.success("Регистрация успешна!");
-      navigate("/"); // Перенаправление на LoginPage после успешной регистрации
-    }, 1500);
-  };
-
-  const handleLoginClick = () => {
-    navigate("/"); // Перенаправление на LoginPage
-  };
-
+const RegisterPage = () => {
   return (
-    <div className="registration-page">
-        <div className="registration-container">
-  {/* Фон с анимацией линии */}
-  <div className="ecg-background">
-    <svg
-      className="ecg-line"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 100"
-      preserveAspectRatio="none"
-    >
-      <path
-        className="ecg-path"
-        d="M0,50 L10,50 L20,30 L30,70 L40,50 L60,50 L70,30 L80,50 L100,50 L110,30 L120,70 L130,50 L140,50 L160,50 L170,30 L180,50 L200,50"
-      />
-    </svg>
-  </div>
-  
+    <div className="register-page">
+      <div className="register-container">
+        {/* Верхняя панель */}
+        <div className="header">
+          <div className="header-logo">
+            <LogoIcon className="logo-icon" />
+            <span className="logo-text">HeartON</span>
+          </div>
+          <div className="auth-link">Регистрация</div>
+        </div>
 
-      <Card className="registration-card">
-        <Title level={2} className="registration-title">
-          Регистрация
-        </Title>
-        <Form
-          name="registration_form"
-          className="registration-form"
-          onFinish={onFinish}
-          layout="vertical"
-        >
-          <Form.Item
-            name="username"
-            rules={[{ required: true, message: "Введите имя пользователя!" }]}
-          >
-            <Input
-              prefix={<UserOutlined />}
-              placeholder="Имя пользователя"
+        {/* Основное содержимое */}
+        <div className="content">
+          <h1 className="title">HeartON</h1>
+
+          {/* Форма регистрации */}
+          <form className="register-form">
+            <label htmlFor="username" className="form-label">
+              Имя пользователя
+            </label>
+            <input
+              type="text"
+              id="username"
+              className="form-input"
+              placeholder="Введите имя пользователя"
             />
-          </Form.Item>
-          <Form.Item
-            name="email"
-            rules={[
-              { required: true, message: "Введите электронную почту!" },
-              { type: "email", message: "Введите корректный адрес электронной почты!" },
-            ]}
-          >
-            <Input
-              prefix={<MailOutlined />}
-              placeholder="Электронная почта"
+
+            <label htmlFor="email" className="form-label">
+              Электронная почта
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="form-input"
+              placeholder="Введите электронную почту"
             />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              { required: true, message: "Введите пароль!" },
-              { min: 6, message: "Пароль должен быть не менее 6 символов!" },
-            ]}
-          >
-            <Input.Password
-              prefix={<LockOutlined />}
-              placeholder="Пароль"
+
+            <label htmlFor="password" className="form-label">
+              Пароль
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="form-input"
+              placeholder="Введите пароль"
             />
-          </Form.Item>
-          <Form.Item
-            name="agreement"
-            valuePropName="checked"
-            rules={[
-              {
-                validator: (_, value) =>
-                  value
-                    ? Promise.resolve()
-                    : Promise.reject(new Error("Вы должны согласиться с условиями!")),
-              },
-            ]}
-          >
-            <Checkbox>
-              Я принимаю <a href="#">условия использования</a>
-            </Checkbox>
-          </Form.Item>
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={loading}
-              block
-            >
+
+            <label className="form-checkbox">
+              <input type="checkbox" />
+              <span className="checkbox-text">Я принимаю условия использования</span>
+            </label>
+
+            <button type="submit" className="register-button">
               Зарегистрироваться
-            </Button>
-          </Form.Item>
-          <Form.Item>
-            <Button
-              type="default"
-              className="back-to-login-button"
-              onClick={handleLoginClick}
-              block
-            >
-              Назад к авторизации
-            </Button>
-          </Form.Item>
-        </Form>
-      </Card>
-    </div>
+            </button>
+          </form>
+
+          {/* Ссылка на авторизацию */}
+          <p className="account-text">
+            Уже есть аккаунт? <a href="/" className="login-link">Войти</a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default RegistrationPage;
+export default RegisterPage;

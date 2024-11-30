@@ -58,7 +58,7 @@ const LoginPage = () => {
 
           {/* Фраза "Есть аккаунт?" */}
           <p className="account-text">
-            Есть аккаунт? <a href="/register" className="login-link">Войти</a>
+            Нет аккаунта? <a href="/register" className="login-link">Создать</a>
           </p>
         </div>
       </div>
