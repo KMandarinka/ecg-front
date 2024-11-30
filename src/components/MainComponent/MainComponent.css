@@ -14,7 +14,7 @@
 
 /* Top section of the main container (below the header) */
 .top-container {
-    flex: 0 0 40%; /* Take up 30% of the height */
+    flex: 0 0 40%; /* Take up 40% of the height */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -184,6 +184,7 @@
 .contact-link:hover {
     color: white; /* Меняем цвет текста на белый при наведении */
     transition: color 0.3s ease; /* Плавный переход */
+    text-decoration-color: #ffffff; /* Цвет подчеркивания совпадает с текстом */
 }
 
 /* Стили для кнопки "Как работает программа?" */
