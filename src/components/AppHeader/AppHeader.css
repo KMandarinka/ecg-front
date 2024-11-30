@@ -45,24 +45,71 @@ body {
   height: 51px;
 }
 
-/* Navigation links styles */
-.navLinks {
+/* Right section of the header */
+.right-section {
   display: flex;
-  list-style: none;
-  gap: 20px;
+  align-items: center;
+  gap: 20px; /* Расстояние между основными группами элементов */
 }
 
-.navLinks a {
-  text-decoration: none;
-  color: #007AFF;
-  font-size: 18px;
-  transition: color 0.3s;
-  font-family: 'Podkova', serif;
+/* Группа: Имя пользователя и иконка "домик" */
+.user-home-group {
+  display: flex;
+  align-items: center; /* Вертикальное выравнивание */
+  gap: 8px; /* Минимальное расстояние между именем пользователя и домиком */
 }
 
-.navLinks a:hover {
-  color: white;
+/* Username style */
+.username {
+  font-family: 'Podkova', serif; /* Шрифт */
+  font-size: 20px; /* Размер текста */
+  font-weight: bold;
+  color: #007AFF; /* Цвет текста */
+  text-decoration: underline; /* Подчеркивание */
+  text-decoration-color: #007AFF; /* Цвет подчеркивания совпадает с текстом */
+  transition: transform 0.3s, color 0.3s, text-decoration-color 0.3s; /* Плавный переход */
+  margin-top: 6px; /* Отступ сверху */
 }
+
+.username:hover {
+  transform: scale(1.1); /* Легкое увеличение имени пользователя */
+  color: #ffffff; /* Белый цвет текста при наведении */
+  text-decoration-color: #ffffff; /* Цвет подчеркивания становится белым */
+}
+
+/* Icons styles */
+.icon {
+  width: 32px; /* Ширина иконки */
+  height: 32px; /* Высота иконки */
+  fill: #C0CAD5; /* Цвет заливки иконки */
+  stroke: #007AFF; /* Синий цвет границы */
+  stroke-width: 2px; /* Толщина границы */
+  cursor: pointer; /* Указатель при наведении */
+  transition: transform 0.3s, fill 0.3s, stroke 0.3s; /* Плавный переход эффектов */
+}
+
+.iconn {
+  width: 36px; /* Ширина иконки */
+  height: 36px; /* Высота иконки */
+  fill: #C0CAD5; /* Цвет заливки иконки */
+  stroke: #007AFF; /* Синий цвет границы */
+  stroke-width: 2px; /* Толщина границы */
+  cursor: pointer; /* Указатель при наведении */
+  transition: transform 0.3s, fill 0.3s, stroke 0.3s; /* Плавный переход эффектов */
+  margin-top: 6px; /* Отступ сверху */
+}
+
+
+/* Hover effect on icons */
+.icon:hover {
+  transform: scale(1.1); /* Легкое увеличение иконки */
+  fill: #ffffff; /* Белый цвет заливки */
+  stroke: #ffffff; /* Белая граница при наведении */
+  filter: drop-shadow(0 0 80px rgba(255, 255, 255, 1)); /* Белое свечение */
+}
+
+
+
 
 /* The main container that holds both header and content */
 .main-container {
@@ -72,3 +119,30 @@ body {
   padding-top: 80px; /* Add space for the header */
   box-sizing: border-box;
 }
+
+/* Группа: Имя пользователя и иконка "домик" */
+.user-home-group {
+  display: flex; /* Flexbox для горизонтального расположения */
+  align-items: center; /* Выравнивание по вертикали */
+  gap: 8px; /* Расстояние между именем пользователя и домиком */
+  cursor: pointer; /* Указатель мыши при наведении */
+}
+
+/* Эффекты при наведении на группу */
+.user-home-group:hover .username {
+  color: #ffffff; /* Белый цвет текста */
+  text-decoration-color: #ffffff; /* Белое подчеркивание */
+  transform: scale(1.1); /* Легкое увеличение */
+}
+
+.user-home-group:hover .iconn {
+  fill: #ffffff; /* Белый цвет заливки иконки */
+  stroke: #ffffff; /* Белая граница */
+  transform: scale(1.1); /* Легкое увеличение */
+}
+
+/* Переход для плавного изменения */
+.username, .iconn {
+  transition: transform 0.3s, color 0.3s, fill 0.3s, stroke 0.3s;
+}
+
