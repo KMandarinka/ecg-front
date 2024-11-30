@@ -21,7 +21,7 @@ const AppHeader = () => {
           <HomeIcon className="iconn" />
         </div>
         <NotificationIcon className="icon" />
-        <CloseIcon className="icon" />
+        <CloseIcon className="iconnn" />
       </div>
     </nav>
   );
