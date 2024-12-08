@@ -4,6 +4,7 @@ import { SearchOutlined, UserOutlined } from "@ant-design/icons";
 import "./MainPage.css"; // Импорт кастомных стилей
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import MainComponent from "../../components/MainComponent/MainComponent.jsx";
+import FileUploadModal from "../../components/FileUploadModal/FileUploadModal.jsx";
 
 const { Header } = Layout;
 
@@ -19,6 +20,7 @@ const MainPage = () => {
     <div>
     <AppHeader></AppHeader>
     <MainComponent></MainComponent>
+    <FileUploadModal></FileUploadModal>
     </div>
   );
 };
