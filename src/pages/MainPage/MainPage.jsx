@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import FileUploadModal from "../../components/FileUploadModal/FileUploadModal.jsx";
 import MainComponent from "../../components/MainComponent/MainComponent.jsx";
 import "./MainPage.css";
+import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 
 const MainPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -19,21 +20,30 @@ const MainPage = () => {
     console.log("Modal closed"); // Debug log
   };
 
+
+  
   return (
     <div className="main-page-container">
+       
+       <AppHeader />
+
       <MainComponent onShowModal={showModal} />
       <Modal
-        title="Загрузить файлы"
-        visible={isModalVisible}
-        footer={null}
-        onCancel={handleModalClose}
-        centered
-        destroyOnClose
-      >
-        <FileUploadModal />
-      </Modal>
+      visible={isModalVisible}
+      footer={null}
+      onCancel={handleModalClose}
+      centered
+      destroyOnClose
+      closable={true}
+      title="Загрузка файлов" // Добавляем кастомный заголовок
+      className="custom-modal"
+    >
+      <FileUploadModal />
+    </Modal>
+
     </div>
   );
 };
+
 
 export default MainPage;
