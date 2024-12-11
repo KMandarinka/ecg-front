@@ -1,26 +1,37 @@
-import React from "react";
-import { Layout, Menu, Input, Row, Col, Avatar, Dropdown } from "antd";
-import { SearchOutlined, UserOutlined } from "@ant-design/icons";
-import "./MainPage.css"; // Импорт кастомных стилей
-import AppHeader from "../../components/AppHeader/AppHeader.jsx";
-import MainComponent from "../../components/MainComponent/MainComponent.jsx";
+// MainPage.jsx
+import React, { useState } from "react";
+import { Modal } from "antd";
+import "antd/dist/antd.css";
 import FileUploadModal from "../../components/FileUploadModal/FileUploadModal.jsx";
-
-const { Header } = Layout;
+import MainComponent from "../../components/MainComponent/MainComponent.jsx";
+import "./MainPage.css";
 
 const MainPage = () => {
-  const menu = (
-    <Menu>
-      <Menu.Item key="1">Profile</Menu.Item>
-      <Menu.Item key="2">Logout</Menu.Item>
-    </Menu>
-  );
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+    console.log("Modal opened"); // Debug log
+  };
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+    console.log("Modal closed"); // Debug log
+  };
 
   return (
-    <div>
-    <AppHeader></AppHeader>
-    <MainComponent></MainComponent>
-    <FileUploadModal></FileUploadModal>
+    <div className="main-page-container">
+      <MainComponent onShowModal={showModal} />
+      <Modal
+        title="Загрузить файлы"
+        visible={isModalVisible}
+        footer={null}
+        onCancel={handleModalClose}
+        centered
+        destroyOnClose
+      >
+        <FileUploadModal />
+      </Modal>
     </div>
   );
 };

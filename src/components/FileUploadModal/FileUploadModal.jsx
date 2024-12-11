@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./FileUploadModal.css";
 
-const ModelComponent = () => {
+const FileUploadModal = () => {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -16,41 +17,34 @@ const ModelComponent = () => {
 
   const handleContinue = () => {
     if (file) {
-      console.log('Файл загружен:', file);
-      // Действие при продолжении (например, отправка файла на сервер)
+      console.log("Файл загружен:", file);
+      // Add your file upload logic here
     }
   };
 
   return (
-    <div className="model-component">
+    <div className="file-upload-modal">
       <h2>Загрузить файл</h2>
-
       <div className="file-upload">
         <input
           type="file"
           id="file-input"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
         <label htmlFor="file-input" className="upload-label">
           {file ? (
             <div className="file-info">
               <span className="file-name">{file.name}</span>
-              <button className="remove-file" onClick={handleFileRemove}>❌</button>
+              <button className="remove-file" onClick={handleFileRemove}>
+                ❌
+              </button>
             </div>
           ) : (
             <span className="upload-text">Выберите файл</span>
           )}
         </label>
       </div>
-
-      {file && (
-        <div className="file-preview">
-          <span>Иконка файла: </span>
-          <img src="/path/to/file-icon.png" alt="file-icon" className="file-icon" />
-        </div>
-      )}
-
       <button
         className="continue-button"
         onClick={handleContinue}
@@ -62,4 +56,4 @@ const ModelComponent = () => {
   );
 };
 
-export default ModelComponent;
+export default FileUploadModal;
