@@ -86,6 +86,8 @@
   .patient-item {
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    border-top: 1px solid #007AFF; /* Полоска сверху */
+    width: 930px; /* Длина полоски */
   }
   
   /* Header container with links */
@@ -141,5 +143,11 @@
     font-size: 20px; /* Размер текста */
     color: black; /* Цвет текста */
     margin-top: 30px; /* Отступ сверху */
+    padding-bottom: 20px; /* Добавляем отступ между текстом и полоской */
+    border-bottom: 1px solid #007AFF; /* Полоска снизу */
+    width: 930px; /* Длина полоски */
+    margin: 0 auto; /* Центрируем элемент */
+    text-align: center; /* Центрируем текст */
   }
+  
   

@@ -6,18 +6,37 @@ const SelectPatientPage = () => {
   const [query, setQuery] = useState("");
   const [patients, setPatients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false); // Флаг для отслеживания нажатия на поиск
+  const [hasSearched, setHasSearched] = useState(false); // Флаг для отслеживания поиска
+
+  // Заглушка для API
+  const fetchPatients = async (query) => {
+    console.log("Выполняется запрос на сервер с параметром:", query);
+
+    // Симуляция задержки запроса (например, 1 секунда)
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Пример данных, которые могут вернуться с сервера
+    const mockPatients = [
+      { id: 1, name: "Иванов Иван Иванович", age: 30, diagnosis: "Грипп" },
+      { id: 2, name: "Петров Пётр Петрович", age: 40, diagnosis: "ОРВИ" },
+      { id: 3, name: "Сидоров Сидор Сидорович", age: 35, diagnosis: "Ангина" },
+    ];
+
+    // Фильтрация данных по введённому ФИО
+    return mockPatients.filter((patient) =>
+      patient.name.toLowerCase().includes(query.toLowerCase())
+    );
+  };
 
   const handleSearch = async () => {
     if (!query.trim()) return; // Если поле пустое, не выполнять поиск
 
     setIsLoading(true);
     setHasSearched(true); // Устанавливаем флаг, что поиск был выполнен
+
     try {
-      // Имитируем загрузку списка пациентов с сервера
-      const response = await fetch(`/api/patients?query=${query}`);
-      const data = await response.json();
-      setPatients(data);
+      const results = await fetchPatients(query); // Заглушка для API
+      setPatients(results);
     } catch (error) {
       console.error("Ошибка при загрузке пациентов:", error);
     } finally {
@@ -53,23 +72,25 @@ const SelectPatientPage = () => {
       </div>
 
       {/* Условие для отображения текста "Найдено N пациентов" */}
-      {hasSearched && !isLoading && (
-        <p className="search-result">
+      <div className="search-result-container">
+        {hasSearched && !isLoading && (
+          <p className="search-result">
             {patients.length > 0
-            ? `Найдено ${patients.length} пациентов`
-            : "Пациенты не найдены"}
-        </p>
+              ? `Найдено ${patients.length} пациентов`
+              : "Пациенты не найдены"}
+          </p>
         )}
+      </div>
 
       <div className="patient-list">
         {isLoading ? (
           <p>Загрузка...</p>
         ) : (
-          patients.map((patient, index) => (
-            <div key={index} className="patient-item">
-              <p>{patient.name}</p>
-              <p>{patient.age} лет</p>
-              <p>{patient.diagnosis}</p>
+          patients.map((patient) => (
+            <div key={patient.id} className="patient-item">
+              <p><strong>ФИО:</strong> {patient.name}</p>
+              <p><strong>Возраст:</strong> {patient.age} лет</p>
+              <p><strong>Диагноз:</strong> {patient.diagnosis}</p>
             </div>
           ))
         )}
