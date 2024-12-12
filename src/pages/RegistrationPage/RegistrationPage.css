@@ -17,6 +17,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
+  max-height: 80vh; /* Максимальная высота формы — 90% высоты экрана */
 }
 
 /* Верхняя панель */
@@ -77,9 +78,10 @@
 .form-label {
   display: block;
   font-size: 18px;
-  margin-bottom: 5px;
-  color: #454c63;
+  margin-bottom: -10px;
+  color: #515974;
   text-align: left;
+  
 }
 
 .form-input {
@@ -88,7 +90,7 @@
   font-size: 16px;
   border: 1px solid #007aff;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   box-sizing: border-box;
 }
 
@@ -101,18 +103,21 @@
 .form-checkbox {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #454c63;
-  margin-bottom: 20px;
+  font-size: 20px;
+  color: #515974;
+  margin-bottom: 20px; /* Отступ блока снизу */
 }
 
 .form-checkbox input {
-  margin-right: 10px;
+  margin-right: 10px; /* Уменьшаем отступ между чекбоксом и текстом */
 }
 
 .checkbox-text {
-  font-size: 14px;
+  font-size: 16px;
+  white-space: nowrap; /* Предотвращает перенос текста на новую строку */
+  margin-left: 0; /* Убираем отступ слева */
 }
+
 
 /* Кнопка регистрации */
 .register-button {

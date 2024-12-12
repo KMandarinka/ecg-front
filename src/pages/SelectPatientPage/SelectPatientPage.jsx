@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../SelectPatientPage/SelectPatientPage.css"; // Импорт стилей
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
+import { useNavigate } from "react-router-dom";
 
 const SelectPatientPage = () => {
   const [query, setQuery] = useState("");
   const [patients, setPatients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false); // Флаг для отслеживания поиска
+  const navigate = useNavigate(); 
 
   // Заглушка для API
   const fetchPatients = async (query) => {
@@ -18,6 +20,7 @@ const SelectPatientPage = () => {
     // Пример данных, которые могут вернуться с сервера
     const mockPatients = [
       { id: 1, name: "Иванов Иван Иванович", age: 30, diagnosis: "Грипп" },
+      { id: 1, name: "Иванов Сергей Иванович", age: 35, diagnosis: "Грипп" },
       { id: 2, name: "Петров Пётр Петрович", age: 40, diagnosis: "ОРВИ" },
       { id: 3, name: "Сидоров Сидор Сидорович", age: 35, diagnosis: "Ангина" },
     ];
@@ -65,7 +68,7 @@ const SelectPatientPage = () => {
         </button>
         <button
           className="create-button"
-          onClick={() => console.log("Создать пациента")}
+          onClick={() => navigate("/add-patient")}
         >
           Создать пациента
         </button>

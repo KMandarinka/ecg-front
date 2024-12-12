@@ -81,46 +81,46 @@
   
   .patient-list {
     margin-top: 20px;
+    display: flex; /* Используем Flexbox */
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: center; /* Горизонтальное центрирование */
+    justify-content: center; /* Вертикальное центрирование */
   }
+  
   
   .patient-item {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #007AFF; /* Полоска сверху */
     width: 930px; /* Длина полоски */
+    
+  }
+/* Header container with links */
+.header-container {
+    display: flex; /* Flexbox для управления расположением */
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Вертикальное выравнивание */
+    width: 100%; /* Полная ширина */
+    padding: 30px 40px; /* Отступы */
+    box-sizing: border-box;
+    background-color: transparent; /* Прозрачный фон */
+    text-align: initial; /* Сбрасываем центрирование */
+  }
+
+.breadcrumb {
+    font-family: 'Podkova', serif; /* Шрифт */
+    font-size: 24px;
+    color: #007AFF;
+    text-align: left; /* Выравниваем по левому краю */
+  }
+
+.contact-link {
+    font-family: 'Frank Ruhl Libre', serif; /* Шрифт */
+    font-size: 20px;
+    color: #515974;
+    text-align: right; /* Выравниваем по правому краю */
   }
   
-  /* Header container with links */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* Полная ширина */
-    padding: 0px 40px; /* Отступы внутри */
-    box-sizing: border-box;
-    margin-bottom: 40px;
-    background-color: transparent; /* Прозрачный фон */
-}
-
-/* Breadcrumb link (left-aligned) */
-.breadcrumb {
-    font-family: 'Podkova', serif; /* Шрифт Podkova */
-    font-size: 24px; /* Размер текста */
-    color: #007AFF; /* Цвет текста */
-    cursor: pointer;
-}
-
-/* Contact link (right-aligned) */
-.contact-link {
-    font-family: 'Frank Ruhl Libre', serif; /* Шрифт Frank Ruhl Libre */
-    font-size: 20px; /* Размер текста */
-    color: #515974; /* Цвет текста */
-    text-align: right; /* Выравнивание текста */
-    cursor: pointer;
-    text-decoration: underline; /* Добавляем подчеркивание */
-    text-decoration-color: #515974; /* Цвет подчеркивания совпадает с текстом */
-    text-decoration-thickness: 1px; /* Толщина линии подчеркивания */
-}
 /* Contact link hover effect */
 .contact-link:hover {
     color: white; /* Меняем цвет текста на белый при наведении */

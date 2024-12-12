@@ -159,6 +159,7 @@
     padding: 30px 40px; /* Отступы внутри */
     box-sizing: border-box;
     background-color: transparent; /* Прозрачный фон */
+    
 }
 
 /* Breadcrumb link (left-aligned) */
@@ -178,7 +179,9 @@
     cursor: pointer;
     text-decoration: underline; /* Добавляем подчеркивание */
     text-decoration-color: #515974; /* Цвет подчеркивания совпадает с текстом */
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для текста */
     text-decoration-thickness: 1px; /* Толщина линии подчеркивания */
+    
 }
 /* Contact link hover effect */
 .contact-link:hover {
