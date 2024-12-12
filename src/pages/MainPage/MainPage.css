@@ -15,10 +15,10 @@
 
 
 .custom-modal .ant-modal-body {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;  
-  
+  flex: 1; /* занимает всё оставшееся место под шапкой */
+  margin-top: 70px; /* Смещаем кнопку чуть ниже */
 }
 

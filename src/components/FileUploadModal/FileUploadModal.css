@@ -10,17 +10,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
   height: 150px;
   border: 2px dashed #007AFF;
   border-radius: 10px;
   cursor: pointer;
   background-color: #f5faff;
   margin-bottom: 20px;
+  width: 500px; /* Ширина, аналогичная кнопке "Продолжить" */
+  margin: 0 auto; /* Центрирование по горизонтали */
+  justify-content: center; align-items: center;
+  
 }
 
 .upload-text {
-  font-size: 16px;
+  font-size: 25px;
   color: #007AFF;
   text-align: center;
 }
@@ -29,6 +32,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 18px; /* Размер текста */
+  color: #333; /* Цвет текста */
+  margin-right: 10px; /* Отступ справа от текста */
+  word-break: break-word; /* Разрыв строки для длинного текста */
 }
 
 .remove-file {
@@ -50,11 +57,17 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 20px;
+  margin-top: 70px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+  font-family: 'Podkova', serif; /* Применение шрифта Podkova */
+  font-size: 25px; /* Увеличиваем текст */
+  font-weight: regular; 
+  color: #ffffff; /* Белый текст */
 }
 
 .continue-button:hover {
   background-color: #005bb5;
+  
 }
 
 .continue-button:disabled {
@@ -74,6 +87,7 @@
   background-color: #ECF3FB;
   height: 89px;
   border-bottom: 4px solid #007AFF;
+  flex-shrink: 0; /* Запретим шапке сжиматься */
   
   /* Используем flex для вертикального центрирования содержимого */
   display: flex;
