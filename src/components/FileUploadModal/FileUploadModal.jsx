@@ -24,7 +24,7 @@ const FileUploadModal = () => {
 
   return (
     <div className="file-upload-modal">
-      <h2>Загрузить файл</h2>
+      {/* <h2>Загрузить файл</h2> */}
       <div className="file-upload">
         <input
           type="file"

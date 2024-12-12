@@ -33,6 +33,7 @@ const MainPage = () => {
       footer={null}
       onCancel={handleModalClose}
       centered
+      width={938}
       destroyOnClose
       closable={true}
       title="Загрузка файлов" // Добавляем кастомный заголовок
