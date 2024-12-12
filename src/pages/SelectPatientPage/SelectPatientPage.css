@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.select-patient-page {
+    text-align: center;
+    padding-top: 100px; 
+    width: 100%; /* Гарантируем, что страница занимает всю ширину */
+    min-height: 100vh; /* Высота страницы на весь экран */
+    box-sizing: border-box; /* Включаем padding в расчёт размеров */
+  }
+  
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+  width: 290px; /* Ширина */
+  height: 52px; /* Высота */
+  border: 1px solid #007AFF; /* Обводка */
+  border-radius: 44px; /* Скругление углов */
+  padding: 0 15px; /* Отступы внутри */
+  font-family: 'Inter', sans-serif; /* Шрифт Inter */
+  font-size: 20px; /* Размер текста */
+  color: #007AFF; /* Цвет текста */
+  outline: none; /* Убираем стандартное выделение */
+  box-sizing: border-box; /* Учитываем padding */
+}
+
+.search-bar input::placeholder {
+  color: #007AFF; /* Цвет placeholder */
+  font-family: 'Inter', sans-serif; /* Шрифт для текста placeholder */
+  font-size: 20px; /* Размер placeholder */
+}
+
+  
+/* Кнопка "Поиск" */
+.search-button {
+    width: 150px; /* Короче, чем кнопка "Создать пациента" */
+    height: 52px;
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 44px; /* Скругленные углы */
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    margin-left: 10px; /* Отступ правее от кнопки "Поиск" */
+  }
+  
+  .search-button:hover {
+    background-color: #005bb5; /* Темнее при наведении */
+  }
+  
+  /* Кнопка "Создать пациента" */
+  .create-button {
+    width: 290px; /* Более длинная кнопка */
+    height: 52px;
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 44px; /* Скругленные углы */
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    margin-left: 80px; /* Отступ правее от кнопки "Поиск" */
+  }
+  
+  .create-button:hover {
+    background-color: #005bb5; /* Темнее при наведении */
+  }
+  
+  
+  
+  .patient-list {
+    margin-top: 20px;
+  }
+  
+  .patient-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Header container with links */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Полная ширина */
+    padding: 0px 40px; /* Отступы внутри */
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    background-color: transparent; /* Прозрачный фон */
+}
+
+/* Breadcrumb link (left-aligned) */
+.breadcrumb {
+    font-family: 'Podkova', serif; /* Шрифт Podkova */
+    font-size: 24px; /* Размер текста */
+    color: #007AFF; /* Цвет текста */
+    cursor: pointer;
+}
+
+/* Contact link (right-aligned) */
+.contact-link {
+    font-family: 'Frank Ruhl Libre', serif; /* Шрифт Frank Ruhl Libre */
+    font-size: 20px; /* Размер текста */
+    color: #515974; /* Цвет текста */
+    text-align: right; /* Выравнивание текста */
+    cursor: pointer;
+    text-decoration: underline; /* Добавляем подчеркивание */
+    text-decoration-color: #515974; /* Цвет подчеркивания совпадает с текстом */
+    text-decoration-thickness: 1px; /* Толщина линии подчеркивания */
+}
+/* Contact link hover effect */
+.contact-link:hover {
+    color: white; /* Меняем цвет текста на белый при наведении */
+    transition: color 0.3s ease; /* Плавный переход */
+    text-decoration-color: #ffffff; /* Цвет подчеркивания совпадает с текстом */
+
+}
+
+.select-patient-page h1 {
+    font-family: 'Podkova', serif; /* Применяем шрифт Podkova */
+    font-size: 50px; /* Размер текста */
+    color: #515974; /* Цвет текста */
+    font-weight: medium; /* Для жирного текста, если требуется */
+    margin-bottom: 60px; /* Добавляем отступ снизу */
+  }
+  
+  .search-result {
+    font-family: 'Inter', sans-serif; /* Шрифт Inter */
+    font-weight: 600; /* Semi Bold */
+    font-size: 20px; /* Размер текста */
+    color: black; /* Цвет текста */
+    margin-top: 30px; /* Отступ сверху */
+  }
+  

@@ -7,6 +7,7 @@ body {
   font-family: 'Podkova', serif;
   margin: 0;
   height: 100vh; /* Ensure body takes up full height of the screen */
+  width: 100%;
 }
 
 /* Navbar (Header) styles */

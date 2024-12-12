@@ -4,6 +4,7 @@ import './App.css';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage.jsx';
 import MainPage from './pages/MainPage/MainPage.jsx';
+import SelectPatientPage from "./pages/SelectPatientPage/SelectPatientPage.jsx";
 
 const App = () => (
   <Router>
@@ -11,7 +12,7 @@ const App = () => (
       <Route path="/" element={<LoginPage />} />
       <Route path="/register" element={<RegistrationPage />} />
       <Route path="/main" element={<MainPage />} />
-
+      <Route path="/select-patient" element={<SelectPatientPage />} />
     </Routes>
   </Router>
 );
