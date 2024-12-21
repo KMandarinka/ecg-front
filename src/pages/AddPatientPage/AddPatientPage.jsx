@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddPatientPage.module.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
+import { ReactComponent as BackIcon } from '../../assets/back.svg'; // Иконка "Закрыть"
 
 const AddPatientPage = () => {
   const navigate = useNavigate();
@@ -16,12 +17,14 @@ const AddPatientPage = () => {
 
       <div className={styles["app-info-container"]}>
         <h1 className={styles["app-h1"]}>Введите данные нового пациента</h1>
-        <button className={styles["app-form-button"]}
+        <button
           className={styles["app-back-button"]}
           onClick={() => navigate("/select-patient")}
         >
-          ← Назад к поиску пациентов
+          <BackIcon className={styles["app-back-icon"]} />
+          <span>Назад к поиску пациентов</span>
         </button>
+
       </div>
 
       <div className={styles["app-form-container"]}>
