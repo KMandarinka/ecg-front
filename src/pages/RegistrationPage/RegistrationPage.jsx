@@ -1,69 +1,69 @@
 import React from "react";
-import "../RegistrationPage/RegistrationPage.css"; // Импорт стилей
+import styles from "../RegistrationPage/RegistrationPage.module.css"; // Импорт стилей
 import { ReactComponent as LogoIcon } from "../../assets/Vector.svg"; // Путь к вашему SVG логотипу
 
 const RegisterPage = () => {
   return (
-    <div className="register-page">
-      <div className="register-container">
+    <div className={styles["register-page"]}>
+      <div className={styles["register-container"]}>
         {/* Верхняя панель */}
-        <div className="header">
-          <div className="header-logo">
-            <LogoIcon className="logo-icon" />
-            <span className="logo-text">HeartON</span>
+        <div className={styles["header"]}>
+          <div className={styles["header-logo"]}>
+            <LogoIcon className={styles["logo-icon"]} />
+            <span className={styles["rp-logo-text"]}>HeartON</span>
           </div>
-          <div className="auth-link">Регистрация</div>
+          <div className={styles["auth-link"]}>Регистрация</div>
         </div>
 
         {/* Основное содержимое */}
-        <div className="content">
-          <h1 className="title">HeartON</h1>
+        <div className={styles["rp-content"]}>
+          <h1 className={styles["title"]}>HeartON</h1>
 
           {/* Форма регистрации */}
-          <form className="register-form">
-            <label htmlFor="username" className="form-label">
+          <form className={styles["rp-register-form"]}>
+            <label htmlFor="username" className={styles["rp-form-label"]}>
               Имя пользователя
             </label>
             <input
               type="text"
               id="username"
-              className="form-input"
+              className={styles["rp-form-input"]}
               placeholder="Введите имя пользователя"
             />
 
-            <label htmlFor="email" className="form-label">
+            <label htmlFor="email" className={styles["rp-form-label"]}>
               Электронная почта
             </label>
             <input
               type="email"
               id="email"
-              className="form-input"
+              className={styles["rp-form-input"]}
               placeholder="Введите электронную почту"
             />
 
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="password" className={styles["rp-form-label"]}>
               Пароль
             </label>
             <input
               type="password"
               id="password"
-              className="form-input"
+              className={styles["rp-form-input"]}
               placeholder="Введите пароль"
             />
 
-            <label className="form-checkbox">
+            <label className={styles["form-checkbox"]}>
               <input type="checkbox" />
-              <span className="checkbox-text">Я принимаю условия использования</span>
+              <span className={styles["checkbox-text"]}>Я принимаю условия использования</span>
             </label>
 
-            <button type="submit" className="register-button">
+            <button type="submit" className={styles["register-button"]}>
               Зарегистрироваться
             </button>
           </form>
 
           {/* Ссылка на авторизацию */}
-          <p className="account-text">
-            Уже есть аккаунт? <a href="/" className="login-link">Войти</a>
+          <p className={styles["account-text"]}>
+            Уже есть аккаунт? <a href="/" className={styles["login-link"]}>Войти</a>
           </p>
         </div>
       </div>

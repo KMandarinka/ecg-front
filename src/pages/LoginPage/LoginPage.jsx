@@ -1,54 +1,54 @@
 import React from "react";
-import "../LoginPage/LoginPage.css"; // Импорт стилей
+import styles from "../LoginPage/LoginPage.module.css"; // Импорт стилей
 import { ReactComponent as LogoIcon } from "../../assets/Vector.svg"; // Путь к вашему SVG логотипу
 
 const LoginPage = () => {
   return (
-    <div className="login-page">
-      <div className="login-container">
+    <div className={styles["login-page"]}>
+      <div className={styles["login-container"]}>
         {/* Верхняя панель */}
-        <div className="header">
-          <div className="header-logo">
-            <LogoIcon className="logo-icon" />
-            <span className="logo-text">HeartON</span>
+        <div className={styles["header"]}>
+          <div className={styles["header-logo"]}>
+            <LogoIcon className={styles["logo-icon"]} />
+            <span className={styles["logo-text"]}>HeartON</span>
           </div>
-          <div className="auth-link">Авторизация</div>
+          <div className={styles["auth-link"]}>Авторизация</div>
         </div>
 
         {/* Основное содержимое */}
-        <div className="content">
-          <h1 className="title">HeartON</h1>
+        <div className={styles["content"]}>
+          <h1 className={styles["title"]}>HeartON</h1>
 
           {/* Форма авторизации */}
-          <form className="login-form">
-            <label htmlFor="email" className="form-label">
+          <form className={styles["login-form"]}>
+            <label htmlFor="email" className={styles["form-label"]}>
               Почта/Телефон
             </label>
             <input
               type="text"
               id="email"
-              className="form-input"
+              className={styles["form-input"]}
               placeholder="Введите почту или телефон"
             />
 
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="password" className={styles["form-label"]}>
               Пароль
             </label>
             <input
               type="password"
               id="password"
-              className="form-input"
+              className={styles["form-input"]}
               placeholder="Введите пароль"
             />
 
-            <button type="submit" className="login-button">
+            <button type="submit" className={styles["login-button"]}>
               Вход
             </button>
           </form>
 
           {/* Ссылка на восстановление пароля */}
           <button
-            className="forgot-password"
+            className={styles["forgot-password"]}
             onClick={() => {
               console.log("Восстановить пароль");
             }}
@@ -57,8 +57,8 @@ const LoginPage = () => {
           </button>
 
           {/* Фраза "Есть аккаунт?" */}
-          <p className="account-text">
-            Нет аккаунта? <a href="/register" className="login-link">Создать</a>
+          <p className={styles["account-text"]}>
+            Нет аккаунта? <a href="/register" className={styles["login-link"]}>Создать</a>
           </p>
         </div>
       </div>

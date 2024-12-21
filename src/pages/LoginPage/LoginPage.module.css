@@ -1,0 +1,165 @@
+/* Общие стили для страницы */
+body {
+  margin: 0;
+  font-family: 'Podkova', sans-serif;
+  background: linear-gradient(135deg, #ffffff, #dbeafe);
+  height: auto; /* Оставляем height: auto */
+  display: block; /* Устанавливаем display: block */
+}
+
+/* Стили только для страницы входа */
+.login-page {
+  height: 100vh; /* Высота на весь экран */
+  display: flex; /* Используем Flexbox для центрирования */
+  justify-content: center; /* Горизонтальное центрирование */
+  align-items: center; /* Вертикальное центрирование */
+}
+
+/* Контейнер страницы */
+.login-page .login-container {
+  width: 90%; /* Уменьшаем размер контейнера */
+  max-width: 400px; /* Максимальная ширина контейнера */
+  background: linear-gradient(145deg, #eaf3ff, #ffffff);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  max-height: 66vh; /* Максимальная высота формы — 90% высоты экрана */
+}
+
+/* Верхняя панель */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #c0cad5;
+  border-radius: 15px 15px 0 0;
+}
+
+/* Логотип в верхней панели */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  fill: #c0cad5;
+  margin-left: -8px; /* Настройка отступа */
+}
+
+.logo-text {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 24px;
+  color: #007aff;
+  margin-left: 1px; /* Настройка отступа */
+  -webkit-text-stroke: 0.5px aliceblue; /* Белый обводка */
+}
+
+/* Ссылка "Авторизация" */
+.auth-link {
+  font-size: 18px;
+  color: #007aff;
+  cursor: pointer;
+  margin-top: 10px; /* Отступ сверху */
+  margin-bottom: -30px;
+}
+
+/* Основное содержимое */
+.content {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Заголовок "HeartON" */
+.title {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 48px;
+  color: #007aff;
+  margin-top: 10px; /* Отступ сверху */
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 0.0001px aliceblue; /* Белая обводка */
+}
+
+/* Форма авторизации */
+.login-form {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #454c63;
+  text-align: left; /* Выровнять текст по левому краю */
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #007aff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #005bb5;
+}
+
+/* Кнопка входа */
+.login-button {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007aff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #005bb5;
+}
+
+/* Кнопка "Восстановить пароль" */
+.forgot-password {
+  font-size: 16px;
+  color: #007aff;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.forgot-password:hover {
+  color: #005bb5;
+}
+
+/* Стили для фразы "Есть аккаунт?" */
+.account-text {
+  font-size: 16px;
+  color: #454c63;
+  margin-top: 15px; /* Отступ сверху для текста */
+  text-align: center; /* Центрируем текст */
+}
+
+.login-link {
+  color: #007aff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-link:hover {
+  color: #0056b3;
+}

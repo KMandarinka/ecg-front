@@ -1,0 +1,88 @@
+.app-add-patient-page {
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.app-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%; /* Полная ширина */
+}
+
+.app-breadcrumb {
+  font-family: 'Podkova', serif;
+  font-size: 20px;
+  color: #007AFF;
+}
+
+.app-contact-link {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 18px;
+  color: #515974;
+}
+
+.app-contact-link:hover {
+  color: #007AFF;
+  transition: color 0.3s ease;
+}
+
+.app-info-container {
+  margin-bottom: 20px;
+}
+
+.app-back-button {
+  font-size: 16px;
+  color: #007AFF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.app-h1 {
+  font-family: 'Podkova', serif;
+  font-size: 24px;
+  color: #515974;
+}
+
+
+.app-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.app-form-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #515974;
+}
+
+.app-form-input {
+  height: 35px;
+  border: 1px solid #007AFF;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.app-form-button {
+  margin-top: 20px;
+  background-color: #007AFF;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.app-form-button:hover {
+  background-color: #005BB5;
+}
