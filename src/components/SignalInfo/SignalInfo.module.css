@@ -1,41 +1,72 @@
 .signal-info {
-    padding: 20px;
+    /* Общий контейнер — синяя рамка, скруглённые углы, фон */
+    position: relative;
     background: #F9F9F9;
-     border-radius: 10px;
-  border: 1px solid #E0E0E0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.signal-info h2 {
+    border-radius: 10px;
+    border: 1px solid #007AFF; /* Синяя рамка */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Шапка */
+  .signal-title-container {
+    background-color: #E9EFF6;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #007AFF;
+  }
+  
+  /* Заголовок: шрифт Podkova, 20, цвет #515974, выравнивание по центру */
+  .signal-title {
+    margin: 0;
     font-family: 'Podkova', serif;
     font-size: 20px;
     color: #515974;
-    margin-bottom: 15px;
-  text-align: left;
-}
-
-
-.info-grid {
+    text-align: center;
+  }
+  
+  /* Основной блок */
+  .signal-info-body {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Сетка из двух колонок */
+  .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin-bottom: 10px;
-}
-
-.info-grid p {
+  }
+  
+  /* Подзаголовки внутри сетки (ЧСС, Комплекс QRS) — синие #007AFF, чуть крупнее/жирнее */
+  .category-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 16px;
+    color: #007AFF;
+    font-weight: bold;
+    margin: 0 0 5px;
+  }
+  
+  /* Подпись параметра (например, "Минимальная") — серый #515974 */
+  .sub-label {
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 16px;
     color: #515974;
-     line-height: 1.4;
-    margin: 2px 0;
-    white-space: nowrap;
-}
-
-.info-grid p strong {
-   color: #515974;
-}
-
-.details-link {
+    font-weight: normal;
+  }
+  
+  /* Значение параметра (числа и единицы) — синий #007AFF */
+  .sub-value {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 16px;
+    color: #007AFF;
+    font-weight: normal;
+  }
+  
+  /* Ссылка Подробнее */
+  .details-link {
     display: block;
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 16px;
@@ -43,9 +74,10 @@
     text-align: right;
     margin-top: 10px;
     text-decoration: none;
-}
-
-.details-link:hover {
+  }
+  
+  .details-link:hover {
     text-decoration: underline;
     color: #005BB5;
-}
+  }
+  
