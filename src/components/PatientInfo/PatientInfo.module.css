@@ -1,27 +1,70 @@
 .patient-info {
+    /* Чтобы компонент был «длиннее», задаём min-height */
+    min-height: 600px;
+    position: relative;
+    background: #F9F9F9;
+    border-radius: 10px;
+    border: 1px solid #007AFF; /* Рамка вокруг всего компонента */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    overflow: hidden; /* Чтобы скругления не обрезались */
+  }
+  
+  /* Шапка (заголовок) */
+  .patient-title-container {
+    background-color: #E9EFF6;
     padding: 20px;
-      background: #F9F9F9;
-     border-radius: 10px;
-    border: 1px solid #E0E0E0;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    border-bottom: 1px solid #007AFF; /* Рамка только снизу */
   }
   
-  .patient-info h2 {
-      font-family: 'Podkova', serif;
-      font-size: 20px;
-      color: #515974;
-      margin-bottom: 20px;
-      text-align: left;
+  /* Заголовок: шрифт Podkova, 32, цвет #515974, по центру */
+  .patient-title {
+    margin: 0;
+    font-family: 'Podkova', serif;
+    font-size: 32px;
+    color: #515974;
+    text-align: center;
+    position: relative;
+    
   }
   
-  .patient-info p {
-      font-family: 'Frank Ruhl Libre', serif;
-      font-size: 16px;
-      color: #515974;
-      margin: 5px 0;
-      line-height: 1.4;
+  /* Иконка редактирования */
+  .edit-icon {
+    font-size: 18px;
+    margin-left: 8px;
+    color: #515974;
+    cursor: pointer;
   }
   
-  .patient-info p strong {
-      color: #515974;
+  /* Основная часть (ФИО, Возраст и т.д.) */
+  .patient-info-body {
+    padding: 20px;
+    box-sizing: border-box;
   }
+  
+  /* Метки (ФИО, Возраст и т.д.) */
+  .label {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 16px;
+    color: #007AFF;
+    font-weight: bold;
+    margin: 5px 0 0;
+  }
+  
+  /* Значения (ФИО пользователя и т.д.) */
+  .value {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 16px;
+    color: #515974;
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+  
+  /* Горизонтальная линия-разделитель */
+  .divider {
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    margin: 10px 0;
+  }
+  
