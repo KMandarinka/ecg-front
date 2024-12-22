@@ -1,33 +1,50 @@
-.ecg-visualization {
-  padding: 20px;
-  background-color: #f7f7f7;
-}
-
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-button {
-  margin: 5px;
-  padding: 10px;
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #005bb5;
-}
-
 .ecg-container {
-    margin-bottom: 20px;
-    border: 1px solid #E0E0E0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Аналогичная стилистика, как в других компонентах */
+    position: relative;
     background-color: #F9F9F9;
     border-radius: 10px;
-    padding: 20px;
+    border: 1px solid #007AFF; /* Синяя рамка по всему периметру */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     width: 100%;
-}
+    overflow: hidden; /* Чтобы скругления углов не обрезались */
+  }
+  
+  /* Шапка (заголовок) */
+  .ecg-title-container {
+    background-color: #E9EFF6;
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #007AFF;
+  }
+  
+  /* Заголовок: шрифт Podkova, цвет #515974, выравнивание по центру */
+  .ecg-title {
+    margin: 0;
+    font-family: 'Podkova', serif;
+    font-size: 20px;  /* при желании 32px, как в других блоках */
+    color: #515974;
+    text-align: center;
+  }
+  
+  /* Основная часть с графиками */
+  .ecg-body {
+    padding: 20px;
+    box-sizing: border-box;
+    max-height: 50vh; /* Если нужно ограничить высоту, уберите/измените по вкусу */
+    overflow-y: auto; /* Вертикальная прокрутка */
+  }
+  
+  /* Каждый отдельный блок отведения */
+  .lead-block {
+    margin-bottom: 30px;
+  }
+  
+  /* Заголовок отведения: цвет #007AFF, чтобы выделить */
+  .lead-title {
+    margin: 10px 0;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 16px;
+    color: #007AFF;
+    font-weight: bold;
+  }
+  

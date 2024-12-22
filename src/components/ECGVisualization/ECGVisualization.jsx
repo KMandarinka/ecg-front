@@ -9,11 +9,12 @@ const generateRealisticECG = (
   timeShift = 0.0,
   leadType = 'I'
 ) => {
+  // ... ваш существующий код генерации
   const points = [];
   const sampleRate = 1000;
   const duration = 5;
   const totalSamples = sampleRate * duration;
-
+  
   let pWaveAmplitude = 0.15;
   let rWaveAmplitude = 1.0;
   let sWaveAmplitude = 0.25;
@@ -161,17 +162,19 @@ const ECGVisualization = () => {
   }, []);
 
   return (
-    <div className={styles['ecg-container']}>
-      <div
-        style={{
-          height: '50vh',
-          overflowY: 'auto',
-        }}
-      >
+    <div className={styles["ecg-container"]}>
+      {/* Шапка (заголовок) */}
+      <div className={styles["ecg-title-container"]}>
+        <h2 className={styles["ecg-title"]}>Визуализация сигнала ЭКГ</h2>
+      </div>
+
+      {/* Основной блок с графиками */}
+      <div className={styles["ecg-body"]}>
         {Object.entries(ecgData).map(([lead, points]) => (
-          <div key={lead} style={{ marginBottom: '30px' }}>
+          <div className={styles["lead-block"]} key={lead}>
             {/* Заголовок для каждого отведения */}
-            <h3 style={{ margin: '10px 0' }}>Отведение {lead}</h3>
+            <h3 className={styles["lead-title"]}>Отведение {lead}</h3>
+
             <Plot
               style={{ width: '100%' }}
               data={[
@@ -192,18 +195,17 @@ const ECGVisualization = () => {
                   zeroline: false,
                   range: [0, 5],
                   gridcolor: '#F2F2F2',
-                  automargin: true, // Чтобы не сливалось с осями
+                  automargin: true,
                 },
                 yaxis: {
                   title: 'Амплитуда (мВ)',
                   showgrid: true,
                   zeroline: false,
                   gridcolor: '#F2F2F2',
-                  automargin: true, // Чтобы не сливалось с осями
+                  automargin: true,
                 },
                 plot_bgcolor: 'transparent',
                 paper_bgcolor: 'transparent',
-                // Увеличиваем отступы, чтобы названия осей не сливались
                 margin: { l: 60, r: 60, t: 20, b: 40 },
                 height: 300,
               }}
