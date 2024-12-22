@@ -1,0 +1,27 @@
+.patient-info {
+    padding: 20px;
+      background: #F9F9F9;
+     border-radius: 10px;
+    border: 1px solid #E0E0E0;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .patient-info h2 {
+      font-family: 'Podkova', serif;
+      font-size: 20px;
+      color: #515974;
+      margin-bottom: 20px;
+      text-align: left;
+  }
+  
+  .patient-info p {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 16px;
+      color: #515974;
+      margin: 5px 0;
+      line-height: 1.4;
+  }
+  
+  .patient-info p strong {
+      color: #515974;
+  }

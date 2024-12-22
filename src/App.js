@@ -6,6 +6,7 @@ import RegistrationPage from './pages/RegistrationPage/RegistrationPage.jsx';
 import MainPage from './pages/MainPage/MainPage.jsx';
 import SelectPatientPage from "./pages/SelectPatientPage/SelectPatientPage.jsx";
 import AddPatientPage from "./pages/AddPatientPage/AddPatientPage";
+import PatientPage from './pages/PatientPage/PatientPage';
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
       <Route path="/main" element={<MainPage />} />
       <Route path="/select-patient" element={<SelectPatientPage />} />
       <Route path="/add-patient" element={<AddPatientPage />} />
+      <Route path="/patient" element={<PatientPage />} />
     </Routes>
   </Router>
 );

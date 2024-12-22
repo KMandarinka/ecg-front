@@ -1,0 +1,64 @@
+.patient-page {
+  font-family: sans-serif;
+}
+
+.main-body-container {
+  width: 100%;
+   display: flex;
+  flex-direction: column;
+    padding: 20px;
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 80px;
+}
+
+.breadcrumb {
+   font-size: 14px;
+  color: #828282;
+  white-space: nowrap;
+}
+
+.contact-link {
+  font-size: 14px;
+  color: #1E67F8;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.content-container {
+  display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info-container {
+    flex: 1;
+    margin-right: 20px;
+    width: 25%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.visualization-container {
+  flex: 2;
+   display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ecg-wrapper {
+   margin-bottom: 20px;
+  border: 1px solid lightgray;
+   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}

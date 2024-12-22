@@ -67,7 +67,13 @@ const AddPatientPage = () => {
               <input className={styles["app-form-input"]} type="email" placeholder="Почта" />
             </label>
           </div>
-          <button className={styles["app-form-button"]} type="submit">Сохранить</button>
+          <button
+            className={styles["app-form-button"]}
+            type="button"
+            onClick={() => navigate("/patient")}
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
