@@ -1,5 +1,9 @@
 .patient-page {
   font-family: sans-serif;
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  margin: 0; 
 }
 
 .main-body-container {
@@ -24,12 +28,14 @@
     
   }
 
-.breadcrumb {
+  .breadcrumb {
     font-family: 'Podkova', serif; /* Шрифт */
-    font-size: 24px;
+    font-size: 20px;
     color: #007AFF;
     text-align: left; /* Выравниваем по левому краю */
+    margin-bottom: 10px; /* Одинаковый отступ снизу */
   }
+  
   .contact-link {
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 20px;
@@ -37,6 +43,7 @@
     text-align: right;
     text-decoration-line: underline; /* Включаем подчеркивание */
     text-decoration-color: #515974; /* Задаём цвет подчеркивания */
+    margin-bottom: 10px; /* Одинаковый отступ снизу */
   }
   
   .contact-link:hover {
@@ -50,28 +57,27 @@
   display: flex;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: -37px;
+    
 }
 
 .info-container {
     flex: 1;
-    margin-right: 20px;
-    width: 25%;
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: px;
+    width: 20%;
+  padding: 25px;
 }
 
 .visualization-container {
   flex: 2;
    display: flex;
   flex-direction: column;
-  background-color: white;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .ecg-wrapper {
    margin-bottom: 20px;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
 }

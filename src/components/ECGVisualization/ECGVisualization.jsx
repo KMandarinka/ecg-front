@@ -161,6 +161,10 @@ const ECGVisualization = () => {
     setEcgData(newEcgData);
   }, []);
 
+  const handleDetailsClick = () => {
+    alert('Переход к дополнительной информации о сигнале ЭКГ');
+  };
+
   return (
     <div className={styles["ecg-container"]}>
       {/* Шапка (заголовок) */}
@@ -176,7 +180,7 @@ const ECGVisualization = () => {
             <h3 className={styles["lead-title"]}>Отведение {lead}</h3>
 
             <Plot
-              style={{ width: '100%' }}
+              style={{ width: '100%'}}
               data={[
                 {
                   x: points.map((point) => point.x),
@@ -207,13 +211,21 @@ const ECGVisualization = () => {
                 plot_bgcolor: 'transparent',
                 paper_bgcolor: 'transparent',
                 margin: { l: 60, r: 60, t: 20, b: 40 },
-                height: 300,
+                height: 240,
               }}
               config={{ responsive: true }}
             />
           </div>
         ))}
       </div>
+      {/* Кликабельный текст "Подробнее" */}
+      <a
+        className={styles["details-text"]}
+        onClick={handleDetailsClick}
+        href="#"
+      >
+        Подробнее &gt;
+      </a>
     </div>
   );
 };
