@@ -1,0 +1,54 @@
+/* Основной контейнер для 3D-визуализации */
+.ecg-3d-container {
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #007aff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    overflow: hidden;
+    height: calc(100vh - 120px); /* Учитываем отступ для панели задач */
+}
+
+/* Шапка (заголовок) */
+.ecg-title-container {
+    background-color: #e9eff6;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #007aff;
+}
+
+/* Заголовок: шрифт Podkova, цвет #515974, выравнивание по центру */
+.ecg-title {
+    margin: 0;
+    font-family: "Podkova", serif;
+    font-size: 24px;
+    color: #515974;
+    text-align: center;
+}
+
+/* Основная часть с графиками */
+.ecg-body {
+    padding: 20px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 180px); /* Учитываем высоту заголовка и отступы */
+    overflow-y: auto;
+}
+
+/* Для блока с 3D-рендерингом */
+.plot {
+    width: 100%;
+    height: 500px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .ecg-3d-container {
+        width: 95%;
+        height: 400px;
+    }
+
+    .plot {
+        height: 400px;
+    }
+}

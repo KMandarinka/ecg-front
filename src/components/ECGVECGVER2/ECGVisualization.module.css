@@ -1,0 +1,38 @@
+.ecg-visualization {
+    border: 1px solid #007AFF;
+    border-radius: 10px;
+    padding: 20px;
+    background: #F9F9F9;
+    margin: 20px 0;
+  }
+  
+  .ecg-visualization h2 {
+    font-family: 'Podkova', serif;
+    font-size: 20px;
+    color: #515974;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .upload-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Podkova', serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007AFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .upload-button:hover {
+    background-color: #005BB5;
+  }
+  
+  .ecg-plot {
+    margin-bottom: 30px;
+  }
+  
