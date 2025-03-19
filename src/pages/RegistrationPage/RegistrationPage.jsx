@@ -1,12 +1,48 @@
-import React from "react";
-import styles from "../RegistrationPage/RegistrationPage.module.css"; // Импорт стилей
-import { ReactComponent as LogoIcon } from "../../assets/Vector.svg"; // Путь к вашему SVG логотипу
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../RegistrationPage/RegistrationPage.module.css"; 
+import { ReactComponent as LogoIcon } from "../../assets/Vector.svg"; 
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Иконки глаза
 
 const RegisterPage = () => {
+  const [login, setLogin] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Стейт для показа пароля
+  const navigate = useNavigate();
+
+  const handleRegistration = async (event) => {
+    event.preventDefault();
+  
+    try {
+      const response = await fetch("http://localhost:4000/api/v1/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({ login, name, password }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Ошибка регистрации: ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log("Успешная регистрация:", data);
+
+      localStorage.setItem("token", data.access_token);
+      navigate("/main");
+    } catch (error) {
+      console.error("Ошибка регистрации:", error.message);
+      alert("Ошибка регистрации. Проверьте данные!");
+    }
+  };
+
   return (
     <div className={styles["register-page"]}>
       <div className={styles["register-container"]}>
-        {/* Верхняя панель */}
         <div className={styles["header"]}>
           <div className={styles["header-logo"]}>
             <LogoIcon className={styles["logo-icon"]} />
@@ -15,12 +51,10 @@ const RegisterPage = () => {
           <div className={styles["auth-link"]}>Регистрация</div>
         </div>
 
-        {/* Основное содержимое */}
         <div className={styles["rp-content"]}>
           <h1 className={styles["title"]}>HeartON</h1>
 
-          {/* Форма регистрации */}
-          <form className={styles["rp-register-form"]}>
+          <form className={styles["rp-register-form"]} onSubmit={handleRegistration}>
             <label htmlFor="username" className={styles["rp-form-label"]}>
               Имя пользователя
             </label>
@@ -29,30 +63,45 @@ const RegisterPage = () => {
               id="username"
               className={styles["rp-form-input"]}
               placeholder="Введите имя пользователя"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
 
             <label htmlFor="email" className={styles["rp-form-label"]}>
-              Электронная почта
+              Логин (почта/телефон)
             </label>
             <input
-              type="email"
+              type="text"
               id="email"
               className={styles["rp-form-input"]}
-              placeholder="Введите электронную почту"
+              placeholder="Введите логин"
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
             />
 
             <label htmlFor="password" className={styles["rp-form-label"]}>
               Пароль
             </label>
-            <input
-              type="password"
-              id="password"
-              className={styles["rp-form-input"]}
-              placeholder="Введите пароль"
-            />
+            <div className={styles["password-container"]}>
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                className={styles["rp-form-input"]}
+                placeholder="Введите пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className={styles["toggle-password"]}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
 
             <label className={styles["form-checkbox"]}>
-              <input type="checkbox" />
+              <input type="checkbox" required />
               <span className={styles["checkbox-text"]}>Я принимаю условия использования</span>
             </label>
 
@@ -61,7 +110,6 @@ const RegisterPage = () => {
             </button>
           </form>
 
-          {/* Ссылка на авторизацию */}
           <p className={styles["account-text"]}>
             Уже есть аккаунт? <a href="/" className={styles["login-link"]}>Войти</a>
           </p>
