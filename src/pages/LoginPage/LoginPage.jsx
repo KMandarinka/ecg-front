@@ -32,7 +32,7 @@ const LoginPage = () => {
       console.log("Успешный вход:", data);
   
       localStorage.setItem("token", data.access_token); // Сохраняем токен в localStorage
-
+      console.log(localStorage.getItem("token"));
       navigate("/main"); // Переход на страницу main
     } catch (error) {
       console.error("Ошибка входа:", error.message);
@@ -95,10 +95,11 @@ const LoginPage = () => {
 
           <button
             className={styles["forgot-password"]}
-            onClick={() => console.log("Восстановить пароль")}
+            onClick={() => navigate("/change-password")}
           >
             Восстановить пароль
           </button>
+
 
           <p className={styles["account-text"]}>
             Нет аккаунта? <a href="/register" className={styles["login-link"]}>Создать</a>

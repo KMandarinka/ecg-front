@@ -8,6 +8,9 @@ import SelectPatientPage from "./pages/SelectPatientPage/SelectPatientPage.jsx";
 import AddPatientPage from "./pages/AddPatientPage/AddPatientPage";
 import PatientPage from './pages/PatientPage/PatientPage';
 import ECGVECGPage from './pages/ECGVECGPage/ECGVECGPage.jsx';
+import ChangePasswordPage from "./pages/ChangePasswordPage/ChangePasswordPage.jsx";
+
+
 
 const App = () => (
   <Router>
@@ -19,6 +22,7 @@ const App = () => (
       <Route path="/add-patient" element={<AddPatientPage />} />
       <Route path="/patient" element={<PatientPage />} />
       <Route path="/ecgvecg" element={<ECGVECGPage />} />
+      <Route path="/change-password" element={<ChangePasswordPage />} />
     </Routes>
   </Router>
 );
