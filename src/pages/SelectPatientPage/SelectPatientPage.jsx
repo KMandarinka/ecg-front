@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "../SelectPatientPage/SelectPatientPage.css"; // Импорт стилей
+import React, { useState, useEffect } from "react";
+import "../SelectPatientPage/SelectPatientPage.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -7,38 +7,48 @@ const SelectPatientPage = () => {
   const [query, setQuery] = useState("");
   const [patients, setPatients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false); // Флаг для отслеживания поиска
-  const navigate = useNavigate(); 
+  const [hasSearched, setHasSearched] = useState(false);
+  const navigate = useNavigate();
 
   // Заглушка для API
   const fetchPatients = async (query) => {
     console.log("Выполняется запрос на сервер с параметром:", query);
-
-    // Симуляция задержки запроса (например, 1 секунда)
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Пример данных, которые могут вернуться с сервера
     const mockPatients = [
       { id: 1, name: "Иванов Иван Иванович", age: 30, diagnosis: "Грипп" },
-      { id: 1, name: "Иванов Сергей Иванович", age: 35, diagnosis: "Грипп" },
+      { id: 4, name: "Иванов Сергей Иванович", age: 35, diagnosis: "Грипп" },
       { id: 2, name: "Петров Пётр Петрович", age: 40, diagnosis: "ОРВИ" },
       { id: 3, name: "Сидоров Сидор Сидорович", age: 35, diagnosis: "Ангина" },
     ];
 
-    // Фильтрация данных по введённому ФИО
+    if (!query.trim()) return mockPatients;
     return mockPatients.filter((patient) =>
       patient.name.toLowerCase().includes(query.toLowerCase())
     );
   };
 
-  const handleSearch = async () => {
-    if (!query.trim()) return; // Если поле пустое, не выполнять поиск
-
+  const loadDefaultPatients = async () => {
     setIsLoading(true);
-    setHasSearched(true); // Устанавливаем флаг, что поиск был выполнен
-
     try {
-      const results = await fetchPatients(query); // Заглушка для API
+      const defaultPatients = await fetchPatients("");
+      setPatients(defaultPatients);
+    } catch (error) {
+      console.error("Ошибка при загрузке пациентов:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadDefaultPatients();
+  }, []);
+
+  const handleSearch = async () => {
+    setIsLoading(true);
+    setHasSearched(true);
+    try {
+      const results = await fetchPatients(query);
       setPatients(results);
     } catch (error) {
       console.error("Ошибка при загрузке пациентов:", error);
@@ -74,7 +84,6 @@ const SelectPatientPage = () => {
         </button>
       </div>
 
-      {/* Условие для отображения текста "Найдено N пациентов" */}
       <div className="search-result-container">
         {hasSearched && !isLoading && (
           <p className="search-result">
@@ -90,7 +99,11 @@ const SelectPatientPage = () => {
           <p>Загрузка...</p>
         ) : (
           patients.map((patient) => (
-            <div key={patient.id} className="patient-item">
+            <div
+              key={patient.id}
+              className="patient-item hoverable"
+              onClick={() => navigate(`/patient/${patient.id}`)}
+            >
               <p><strong>ФИО:</strong> {patient.name}</p>
               <p><strong>Возраст:</strong> {patient.age} лет</p>
               <p><strong>Диагноз:</strong> {patient.diagnosis}</p>

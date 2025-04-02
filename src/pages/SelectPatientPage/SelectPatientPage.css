@@ -149,5 +149,15 @@
     margin: 0 auto; /* Центрируем элемент */
     text-align: center; /* Центрируем текст */
   }
+
+  .patient-item.hoverable {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
   
+  .patient-item.hoverable:hover {
+    background-color: #f0f8ff; /* нежно-синий фон при наведении */
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2); /* лёгкая тень */
+    border-radius: 10px;
+  }
   
