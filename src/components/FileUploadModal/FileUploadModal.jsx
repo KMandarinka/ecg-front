@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import "./FileUploadModal.css";
 import { useNavigate } from "react-router-dom";
 
-const FileUploadModal = () => {
+const FileUploadModal = ({ onFileUpload }) => {  // Передаём onFileUpload как пропс
   const [file, setFile] = useState(null);
-  const navigate = useNavigate(); // Хук для навигации
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
     if (uploadedFile) {
       setFile(uploadedFile);
+
+      // Сохранение файла через prop-функцию
+      if (onFileUpload) {
+        onFileUpload(uploadedFile);
+      }
     }
   };
 
@@ -19,15 +24,12 @@ const FileUploadModal = () => {
 
   const handleContinue = () => {
     if (file) {
-      console.log("Файл загружен:", file);
-      // Add your file upload logic here
-      navigate("/select-patient"); // Переход на страницу выбора пациента
+      navigate("/select-patient", { state: { file } });  // Передача файла через navigate
     }
   };
 
   return (
     <div className="file-upload-modal">
-      {/* <h2>Загрузить файл</h2> */}
       <div className="file-upload">
         <input
           type="file"

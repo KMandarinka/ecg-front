@@ -28,7 +28,7 @@ const MainComponent = ({ onShowModal }) => {
             <div className="second-line">или перетащите файлы</div>
           </button>
           <button className="button">
-            <div className="first-line">История анализов ЭКГ</div>
+            <div className="first-line">Архив анализов ЭКГ</div>
           </button>
         </div>
         <button className="how-it-works-button">Как работает программа?</button>

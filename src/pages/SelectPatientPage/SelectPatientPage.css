@@ -161,3 +161,21 @@
     border-radius: 10px;
   }
   
+  .scrollable-list {
+    max-height: 450px; /* Высота для 4 пациентов */
+    overflow-y: auto;
+    width: 930px;
+    margin: 0 auto;
+}
+
+.patient-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    text-align: left; /* Выровнено по левому краю */
+}
+
+.patient-item p {
+    margin: 5px 0;
+}
+
