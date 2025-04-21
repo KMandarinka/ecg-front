@@ -181,14 +181,14 @@ body {
 
 .logout-modal-content {
   background-color: #C0CAD5;
-  padding: 30px;
+  padding: 45px 70px; /* Увеличили отступы */
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .logout-modal-content p {
-  font-size: 24px;
+  font-size: 28px;
   color: #393c4a;
   margin-bottom: 20px;
   font-family: 'Podkova', serif;
@@ -201,7 +201,7 @@ body {
 }
 
 .logout-modal-buttons button {
-  padding: 10px 25px;
+  padding: 15px 30px;
   border: none;
   border-radius: 5px;
   font-family: 'Podkova', serif;
