@@ -165,3 +165,62 @@ body {
   transition: transform 0.3s, color 0.3s, fill 0.3s, stroke 0.3s;
 }
 
+/* Стили для модального окна подтверждения выхода */
+.logout-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.logout-modal-content {
+  background-color: #C0CAD5;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logout-modal-content p {
+  font-size: 24px;
+  color: #393c4a;
+  margin-bottom: 20px;
+  font-family: 'Podkova', serif;
+}
+
+.logout-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logout-modal-buttons button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Podkova', serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-modal-buttons button:first-child {
+  background-color: #ff0000;
+  color: white;
+}
+
+.logout-modal-buttons button:last-child {
+  background-color: #007AFF;
+  color: white;
+}
+
+.logout-modal-buttons button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
