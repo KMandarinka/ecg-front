@@ -1,7 +1,14 @@
 import React from "react";
 import "./MainComponent.css";
+import { useNavigate } from "react-router-dom";
 
 const MainComponent = ({ onShowModal }) => {
+  const navigate = useNavigate();
+
+  const handleArchiveClick = () => {
+    navigate("/archive");
+  };
+
   return (
     <div className="main-container">
       <div className="header-container">
@@ -27,10 +34,11 @@ const MainComponent = ({ onShowModal }) => {
             <div className="first-line">Загрузите файлы ЭКГ</div>
             <div className="second-line">или перетащите файлы</div>
           </button>
-          <button className="button">
+          <button className="button" onClick={handleArchiveClick}>
             <div className="first-line">Архив анализов ЭКГ</div>
           </button>
         </div>
+
         <button className="how-it-works-button">Как работает программа?</button>
       </div>
     </div>

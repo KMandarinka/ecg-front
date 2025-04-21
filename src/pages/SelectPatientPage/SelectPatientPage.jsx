@@ -11,6 +11,15 @@ const SelectPatientPage = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // функция для русского склонения
+  const russianPlural = (count, word, cases = [2, 0, 1, 1, 1, 2]) => {
+    return `${count} ${word}${
+      count % 100 > 4 && count % 100 < 20
+        ? 'ов'
+        : ['', 'а', 'ов'][cases[Math.min(count % 10, 5)]]
+    }`;
+  };
 
   // Получаем переданный файл через navigate из FileUploadModal
   useEffect(() => {
@@ -148,7 +157,9 @@ const SelectPatientPage = () => {
       </div>
 
       <div className="search-result-container">
-        <p className="search-result">Найдено {patients.length} пациентов</p>
+      <p className="search-result">
+        Найдено {russianPlural(patients.length, 'пациент')}
+      </p>
       </div>
 
       <div className="patient-list">

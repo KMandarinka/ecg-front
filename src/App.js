@@ -9,6 +9,7 @@ import AddPatientPage from "./pages/AddPatientPage/AddPatientPage";
 import PatientPage from './pages/PatientPage/PatientPage';
 import ECGVECGPage from './pages/ECGVECGPage/ECGVECGPage.jsx';
 import ChangePasswordPage from "./pages/ChangePasswordPage/ChangePasswordPage.jsx";
+import ArchivePage from "./pages/ArchivePage/ArchivePage.jsx";
 
 
 
@@ -23,6 +24,7 @@ const App = () => (
       <Route path="/patient" element={<PatientPage />} />
       <Route path="/ecgvecg" element={<ECGVECGPage />} />
       <Route path="/change-password" element={<ChangePasswordPage />} />
+      <Route path="/archive" element={<ArchivePage />} />
     </Routes>
   </Router>
 );
