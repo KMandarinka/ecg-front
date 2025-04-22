@@ -2,16 +2,16 @@ import React from 'react';
 import PatientInfo from '../../components/PatientInfo/PatientInfo';
 import ECGVisualization from '../../components/ECGVisualization/ECGVisualization';
 import SignalInfo from '../../components/SignalInfo/SignalInfo';
+import Conclusion from '../../components/Conclusion/Conclusion'; // Импортируем новый компонент
 import styles from './PatientPage.module.css';
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 
 const PatientPage = () => {
     const patient = {
         name: 'Смирнов Андрей Аристархович',
-        age: 62,
+        data: 62,
         weight: 97,
         height: 197,
-        diagnosis: 'Амилоидоз',
         phone: '+7 416 723 49 65',
         email: 'hjl@mail.ru'
     };
@@ -25,11 +25,15 @@ const PatientPage = () => {
                     <span className={styles["contact-link"]}>Остались вопросы? Напишите нам</span>
                 </div>
                 <div className={styles["content-container"]}>
-                   <div className={styles["info-container"]}>
+                    <div className={styles["left-column"]}>
                         <PatientInfo patient={patient} />
+                        <Conclusion 
+                          predict="Нормальный синусовый ритм" 
+                          result="Без патологий" 
+                        />
                     </div>
-                    <div className={styles["visualization-container"]}>
-                         <div className={styles["ecg-wrapper"]}>
+                    <div className={styles["right-column"]}>
+                        <div className={styles["ecg-wrapper"]}>
                             <ECGVisualization />
                         </div>
                         <SignalInfo />

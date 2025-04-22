@@ -8,76 +8,74 @@
 
 .main-body-container {
   width: 100%;
-   display: flex;
+  display: flex;
   flex-direction: column;
-    padding: 20px;
+  padding: 20px;
 }
 
-
-/* Header container with links */
 .header-container {
-    display: flex; /* Flexbox для управления расположением */
-    justify-content: space-between; /* Размещаем элементы по краям */
-    align-items: center; /* Вертикальное выравнивание */
-    width: 100%; /* Полная ширина */
-    padding: 30px 40px; /* Отступы */
-    box-sizing: border-box;
-    background-color: transparent; /* Прозрачный фон */
-    text-align: initial; /* Сбрасываем центрирование */
-    margin-top: 60px;
-    
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  background-color: transparent;
+  text-align: initial;
+  margin-top: 60px;
+  margin-bottom: 20px; /* Добавляем отступ снизу */
+}
 
-  .breadcrumb {
-    font-family: 'Podkova', serif; /* Шрифт */
-    font-size: 20px;
-    color: #007AFF;
-    text-align: left; /* Выравниваем по левому краю */
-    margin-bottom: 10px; /* Одинаковый отступ снизу */
-  }
-  
-  .contact-link {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 20px;
-    color: #515974;
-    text-align: right;
-    text-decoration-line: underline; /* Включаем подчеркивание */
-    text-decoration-color: #515974; /* Задаём цвет подчеркивания */
-    margin-bottom: 10px; /* Одинаковый отступ снизу */
-  }
-  
-  .contact-link:hover {
-    color: white;
-    transition: color 0.3s ease;
-    text-decoration-color: #ffffff; /* Меняем цвет подчеркивания при hover */
-  }
-  
+.breadcrumb {
+  font-family: 'Podkova', serif;
+  font-size: 20px;
+  color: #007AFF;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.contact-link {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 20px;
+  color: #515974;
+  text-align: right;
+  text-decoration-line: underline;
+  text-decoration-color: #515974;
+  margin-bottom: 10px;
+}
+
+.contact-link:hover {
+  color: white;
+  transition: color 0.3s ease;
+  text-decoration-color: #ffffff;
+}
 
 .content-container {
   display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: -37px;
-    
+  gap: 20px;
+  padding: 0 20px;
+  margin-top: -37px;
+  align-items: stretch; /* Это значение по умолчанию, но важно для понимания */
 }
 
-.info-container {
-    flex: 1;
-    margin-right: px;
-    width: 20%;
-  padding: 25px;
-}
-
-.visualization-container {
-  flex: 2;
-   display: flex;
+.left-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
   flex-direction: column;
-  padding: 20px;
+  gap: 20px;
+  justify-content: space-between; /* Это выровняет дочерние элементы по высоте */
+}
 
+.right-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between; /* Это выровняет дочерние элементы по высоте */
 }
 
 .ecg-wrapper {
-   margin-bottom: 20px;
-  /* border: 1px solid lightgray; */
-   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
 }

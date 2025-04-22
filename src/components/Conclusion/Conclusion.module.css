@@ -1,0 +1,56 @@
+.conclusion-container {
+    position: relative;
+    background: #F9F9F9;
+    border-radius: 5px;
+    border: 1px solid #007AFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Шапка */
+  .conclusion-title-container {
+    background-color: #E9EFF6;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #007AFF;
+  }
+  
+  .conclusion-title {
+    margin: 0;
+    font-family: 'Podkova', serif;
+    font-size: 24px;
+    color: #515974;
+    text-align: center;
+  }
+  
+  /* Основной блок */
+  .conclusion-body {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .conclusion-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .conclusion-label {
+    font-family: 'Podkova', serif;
+    font-size: 20px;
+    color: #515974;
+    font-weight: normal;
+    text-align: left;
+    flex: 1;
+  }
+  
+  .conclusion-value {
+    font-family: 'Podkova', serif;
+    font-size: 20px;
+    color: #007AFF;
+    font-weight: bold;
+    text-align: right;
+    flex-shrink: 0;
+  }

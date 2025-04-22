@@ -1,15 +1,13 @@
 .patient-info {
-    /* Чтобы компонент был «длиннее», задаём min-height */
-    min-height: 718px;
-    position: relative;
-    background: #F9F9F9;
-    border-radius: 5px;
-    border: 1px solid #007AFF; /* Рамка вокруг всего компонента */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    width: 100%;
-    overflow: hidden; /* Чтобы скругления не обрезались */
+  background: #F9F9F9;
+  border-radius: 5px;
+  border: 1px solid #007AFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  overflow: hidden;
+  /* Убрал min-height, чтобы высота определялась контентом */
+}
 
-  }
   
   /* Шапка (заголовок) */
   .patient-title-container {
@@ -68,4 +66,6 @@
     border-bottom: 1px solid #E0E0E0;
     margin: 10px 0;
   }
+
+  
   
