@@ -25,6 +25,7 @@ const SelectPatientPage = () => {
   useEffect(() => {
     if (location.state?.file) {
       setUploadedFile(location.state.file);
+      console.log(location.state.file);
     }
   }, [location.state]);
 
