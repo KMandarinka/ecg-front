@@ -18,8 +18,8 @@
   
   .conclusion-title {
     margin: 0;
-    font-family: 'Podkova', serif;
-    font-size: 24px;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 26px;
     color: #515974;
     text-align: center;
   }
@@ -38,18 +38,18 @@
   }
   
   .conclusion-label {
-    font-family: 'Podkova', serif;
-    font-size: 20px;
-    color: #515974;
-    font-weight: normal;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 22px;
+    color: #007AFF;
+    font-weight: bold;
     text-align: left;
     flex: 1;
   }
   
   .conclusion-value {
-    font-family: 'Podkova', serif;
-    font-size: 20px;
-    color: #007AFF;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 21px;
+    color: #515974;
     font-weight: bold;
     text-align: right;
     flex-shrink: 0;

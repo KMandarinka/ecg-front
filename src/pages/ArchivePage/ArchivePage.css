@@ -62,7 +62,7 @@
   font-size: 18px;
 }
 
-.patient-indicator {
+.patient-indicator { 
   color: #1890ff;
   font-size: 16px;
   margin-left: 15px;
@@ -153,6 +153,7 @@
 .search-result {
   font-size: 19px;
   color: #515974;
+  text-align: center; /* Выравнивание текста по центру */
 }
 
 .search-container {
@@ -163,7 +164,7 @@
 .search-input {
   width: 100%;
   padding: 12px 16px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #515974;
   border-radius: 8px;
   font-size: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);

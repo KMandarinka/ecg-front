@@ -1,0 +1,132 @@
+.pageContainer {
+  text-align: center;
+  padding-top: 100px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Header */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 30px 40px;
+  background-color: transparent;
+}
+
+.breadcrumb {
+  font-family: 'Podkova', serif;
+  font-size: 24px;
+  color: #007AFF;
+}
+
+.contactLink {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 20px;
+  color: #515974;
+}
+
+.contactLink:hover {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Заголовок */
+.pageTitle {
+  font-family: 'Podkova', serif;
+  font-size: 50px;
+  color: #515974;
+  margin-bottom: 60px;
+}
+
+/* Поиск */
+.searchBar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 290px;
+  height: 52px;
+  border: 1px solid #007AFF;
+  border-radius: 44px;
+  padding: 0 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: #007AFF;
+}
+
+.searchInput::placeholder {
+  color: #007AFF;
+}
+
+.searchButton {
+  width: 150px;
+  height: 52px;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.createButton {
+  width: 290px;
+  height: 52px;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Результаты */
+.searchResultContainer {
+  margin: 20px auto;
+  width: 930px;
+}
+
+.searchResult {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: black;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #007AFF;
+}
+
+/* Список пациентов */
+.patientList {
+  margin-top: 20px;
+}
+
+.scrollableList {
+  max-height: 450px;
+  overflow-y: auto;
+  width: 930px;
+  margin: 0 auto;
+}
+
+.patientItem {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.patientItem:hover {
+  background-color: #f0f8ff;
+  border-radius: 8px;
+}
+
+.patientItem p {
+  margin: 5px 0;
+}

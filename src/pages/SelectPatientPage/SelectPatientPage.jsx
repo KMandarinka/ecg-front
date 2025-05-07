@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../SelectPatientPage/SelectPatientPage.css";
+import "../SelectPatientPage/SelectPatientPage.module.css";
+import styles from "./SelectPatientPage.module.css"; // Импорт модульных стилей
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -130,65 +131,65 @@ const SelectPatientPage = () => {
 };
 
 
-  return (
-    <div className="select-patient-page">
-      <AppHeader />
-      <div className="header-container">
-        <span className="breadcrumb">Главная > Ввод данных > </span>
-        <span className="contact-link">Остались вопросы? Напишите нам</span>
-      </div>
+return (
+  <div className={styles.pageContainer}>
+    <AppHeader />
+    <div className={styles.headerContainer}>
+      <span className={styles.breadcrumb}>Главная > Ввод данных > </span>
+      <span className={styles.contactLink}>Остались вопросы? Напишите нам</span>
+    </div>
 
-      <h1>Введите данные пациента</h1>
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="ФИО пациента"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className="search-button" onClick={handleSearch}>
-          Поиск
-        </button>
-        <button
-          className="create-button"
-          onClick={() => navigate("/add-patient")}
-        >
-          Создать пациента
-        </button>
-      </div>
+    <h1 className={styles.pageTitle}>Введите данные пациента</h1>
+    
+    <div className={styles.searchBar}>
+      <input
+        type="text"
+        placeholder="ФИО пациента"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className={styles.searchInput}
+      />
+      <button className={styles.searchButton} onClick={handleSearch}>
+        Поиск
+      </button>
+      <button
+        className={styles.createButton}
+        onClick={() => navigate("/add-patient")}
+      >
+        Создать пациента
+      </button>
+    </div>
 
-      <div className="search-result-container">
-      <p className="search-result">
+    <div className={styles.searchResultContainer}>
+      <p className={styles.searchResult}>
         Найдено {russianPlural(patients.length, 'пациент')}
       </p>
-      </div>
-
-      <div className="patient-list">
-        {isLoading ? (
-          <p>Загрузка...</p>
-        ) : (
-          <div className="scrollable-list">
-            {patients.map((patient) => {
-              const patientId = patient.patient_id || patient.id || patient._id;
-              return (
-                <div
-                  key={patientId}
-                  className="patient-item hoverable"
-                  onClick={() => handlePatientClick(patientId)}
-                >
-                  <p><strong>Имя:</strong> {patient.name}</p>
-                  <p><strong>Фамилия:</strong> {patient.surname}</p>
-                  <p><strong>День рождения:</strong> {new Date(patient.birthday).toLocaleDateString('ru-RU')}</p>
-                </div>
-              );
-            })}
-
-          </div>
-
-        )}
-      </div>
     </div>
-  );
+
+    <div className={styles.patientList}>
+      {isLoading ? (
+        <p>Загрузка...</p>
+      ) : (
+        <div className={styles.scrollableList}>
+          {patients.map((patient) => {
+            const patientId = patient.patient_id || patient.id || patient._id;
+            return (
+              <div
+                key={patientId}
+                className={styles.patientItem}
+                onClick={() => handlePatientClick(patientId)}
+              >
+                <p><strong>Имя:</strong> {patient.name}</p>
+                <p><strong>Фамилия:</strong> {patient.surname}</p>
+                <p><strong>День рождения:</strong> {new Date(patient.birthday).toLocaleDateString('ru-RU')}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </div>
+);
 };
 
 export default SelectPatientPage;

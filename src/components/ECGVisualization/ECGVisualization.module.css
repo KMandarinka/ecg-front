@@ -17,11 +17,11 @@
     border-bottom: 1px solid #007AFF;
   }
   
-  /* Заголовок: шрифт Podkova, цвет #515974, выравнивание по центру */
+  /* Заголовок: шрифт , цвет #515974, выравнивание по центру */
   .ecg-title {
     margin: 0;
-    font-family: 'Podkova', serif;
-    font-size: 24px;  /* при желании 32px, как в других блоках */
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 26px;  /* при желании 32px, как в других блоках */
     color: #515974;
     text-align: center;
   }
@@ -57,7 +57,7 @@
     text-align: right; /* Выравниваем текст по правому краю */
     margin: 10px 20px; /* Отступы от края */
     font-size: 24px;
-    font-family: 'Podkova', serif;
+    font-family: 'Frank Ruhl Libre', serif;
     color: #007aff;
     text-decoration: none;
     cursor: pointer;

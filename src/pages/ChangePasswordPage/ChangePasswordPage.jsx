@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../LoginPage/LoginPage.module.css";
+import styles from "../ChangePasswordPage/ChangePasswordPage.module.css";
 import { ReactComponent as LogoIcon } from "../../assets/Vector.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";

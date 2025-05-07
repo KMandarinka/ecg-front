@@ -18,8 +18,8 @@
 
 .signal-title {
   margin: 0;
-  font-family: 'Podkova', serif;
-  font-size: 24px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 26px;
   color: #515974;
   text-align: center;
 }
@@ -39,7 +39,7 @@
 
 /* Подзаголовки категорий */
 .category-title {
-  font-family: 'Podkova', serif;
+  font-family: 'Frank Ruhl Libre', serif;
   font-size: 22px;
   color: #007AFF;
   font-weight: bold;
@@ -54,8 +54,8 @@
 }
 
 .sub-label {
-  font-family: 'Podkova', serif;
-  font-size: 20px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 22px;
   color: #515974;
   font-weight: normal;
   text-align: left;
@@ -64,8 +64,8 @@
 }
 
 .sub-value {
-  font-family: 'Podkova', serif;
-  font-size: 20px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 21px;
   color: #007AFF;
   font-weight: bold;
   text-align: right;
@@ -76,7 +76,7 @@
 /* Ссылка Подробнее */
 .details-link {
   display: block;
-  font-family: 'Podkova', serif;
+  font-family: 'Frank Ruhl Libre', serif;
   font-size: 24px;
   color: #007AFF;
   text-align: right;
