@@ -1,23 +1,28 @@
-/* Общие стили для страницы регистрации */
-.register-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Общие стили для страницы */
+body {
+  margin: 0;
   font-family: 'Podkova', sans-serif;
   background: linear-gradient(135deg, #ffffff, #dbeafe);
+  height: 100vh;
 }
 
 /* Контейнер страницы */
-.register-container {
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-container {
   width: 90%;
-  max-width: 400px;
+  max-width: 420px; /* Немного шире */
   background: linear-gradient(145deg, #eaf3ff, #ffffff);
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  box-sizing: border-box;
-  max-height: 72vh; /* Максимальная высота формы — 90% высоты экрана */
+  overflow: hidden;
 }
 
 /* Верхняя панель */
@@ -25,127 +30,165 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #c0cad5;
+  padding: 12px 20px;
+  background-color: #b9c9da;
   border-radius: 15px 15px 0 0;
 }
 
+/* Логотип */
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0px;
 }
 
 .logo-icon {
   width: 40px;
   height: 40px;
-  fill: #c0cad5;
+  fill: #dee4eb;
+  margin-left: -8px;
 }
 
-.rp-logo-text {
+.logo-text {
   font-family: 'Bakbak One', sans-serif;
   font-size: 24px;
   color: #007aff;
-  margin-left: -8px; /* Настройка отступа */
-  -webkit-text-stroke: 0.5px aliceblue; /* Белая обводка */
+  margin-left: 1px;
+  -webkit-text-stroke: 0.5px aliceblue;
 }
 
-/* Ссылка "Регистрация" */
+/* Заголовок формы */
 .auth-link {
   font-size: 18px;
   color: #007aff;
   cursor: pointer;
-  margin-top: 10px; /* Отступ сверху */
   margin-bottom: -30px;
 }
 
 /* Основное содержимое */
-.rp-content {
-  padding: 40px 20px;
+.content {
+  padding: 25px 30px; /* Увеличены отступы */
   text-align: center;
 }
 
-/* Заголовок "HeartON" */
+/* Заголовок */
 .title {
   font-family: 'Bakbak One', sans-serif;
   font-size: 48px;
   color: #007aff;
-  margin-top: 10px; /* Отступ сверху */
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  -webkit-text-stroke: 0.0001px aliceblue; /* Белая обводка */
+  margin: 10px 0 25px;
+  text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 0.5px aliceblue;
 }
 
-/* Форма регистрации */
-.rp-register-form {
-  margin-bottom: 20px;
+/* Форма */
+.login-form {
+  margin-bottom: 15px;
 }
 
-.rp-form-label {
+/* Поля ввода */
+.form-label {
   display: block;
-  font-size: 18px;
-  color: #515974;
+  font-size: 16px;
+  margin-bottom: 8px; /* Увеличен отступ */
+  color: #71778b;
   text-align: left;
-  
+  padding-left: 5px; /* Выравнивание с полем ввода */
 }
 
-.rp-form-input {
+.form-input {
   width: 100%;
-  padding: 10px 15px;
+  padding: 12px 15px; /* Увеличен padding */
   font-size: 16px;
   border: 1px solid #007aff;
   border-radius: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   box-sizing: border-box;
+  height: 46px; /* Фиксированная высота */
 }
 
-.rp-form-input:focus {
+.form-input:focus {
   outline: none;
   border-color: #005bb5;
 }
 
-/* Чекбокс */
-.form-checkbox {
+/* Контейнер пароля */
+.password-container {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #71778b;
+  padding: 0;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
-  font-size: 20px;
-  color: #515974;
-  margin-bottom: 20px; /* Отступ блока снизу */
+  justify-content: center;
+  margin-top: -9px; /* Микро-корректировка при необходимости */
 }
 
-.form-checkbox input {
-  margin-right: 10px; /* Уменьшаем отступ между чекбоксом и текстом */
+.toggle-password:hover {
+  color: #007aff;
 }
 
-.checkbox-text {
-  font-size: 16px;
-  white-space: nowrap; /* Предотвращает перенос текста на новую строку */
-  margin-left: 0; /* Убираем отступ слева */
+/* Чекбокс */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0 20px;
+  padding-left: 5px; /* Выравнивание с полями ввода */
 }
 
+.form-checkbox {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+}
 
-/* Кнопка регистрации */
-.register-button {
+.checkbox-label {
+  font-size: 15px;
+  color: #71778b;
+}
+
+/* Кнопки */
+.login-button {
   width: 100%;
-  padding: 15px 0;
-  font-size: 18px;
+  padding: 14px 0;
+  font-size: 17px;
   font-weight: bold;
   color: #fff;
   background-color: #007aff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 15px 0 20px;
   transition: background-color 0.3s;
 }
 
-.register-button:hover {
+.login-button:hover {
   background-color: #005bb5;
 }
 
-/* Текст "Уже есть аккаунт?" */
+.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Текст с ссылкой */
 .account-text {
   font-size: 16px;
   color: #454c63;
+  margin: 10px 0;
   text-align: center;
 }
 
@@ -157,4 +200,28 @@
 
 .login-link:hover {
   color: #0056b3;
+}
+
+/* Сообщение об ошибке */
+.error-message {
+  color: #ff0000;
+  background-color: #ffeeee;
+  padding: 12px 15px;
+  border-radius: 5px;
+  margin: 0 0 20px;
+  border: 1px solid #ffcccc;
+  font-size: 15px;
+  text-align: left;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 480px) {
+  .login-container {
+    width: 95%;
+    max-width: 100%;
+  }
+  
+  .content {
+    padding: 20px;
+  }
 }
