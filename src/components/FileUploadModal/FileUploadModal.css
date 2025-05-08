@@ -116,10 +116,12 @@
   height: 561px;
   display: flex;
   background: #ffffff;
+  /*background: rgba(236, 243, 251, 0.85) !important; - эффект стекла если хочется*/
   border: 1px solid #007AFF;
   box-shadow: none;
   border-radius: 10px;
   flex-direction: column;
   border: 8px solid #007AFF;
   border-radius: 10px; /* Закругление углов */
+  
 }

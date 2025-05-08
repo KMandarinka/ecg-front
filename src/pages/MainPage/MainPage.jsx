@@ -7,7 +7,10 @@ import MainComponent from "../../components/MainComponent/MainComponent.jsx";
 import "./MainPage.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 
+
+
 const MainPage = () => {
+  
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -19,13 +22,14 @@ const MainPage = () => {
     setIsModalVisible(false);
     console.log("Modal closed"); // Debug log
   };
+  
 
 
   
   return (
     <div className="main-page-container">
-       
-       <AppHeader />
+      
+      <AppHeader />
 
       <MainComponent onShowModal={showModal} />
       <Modal

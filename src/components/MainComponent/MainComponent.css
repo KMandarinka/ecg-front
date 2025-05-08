@@ -2,16 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
-/* Main container holding the top and bottom sections */
-.main-container {
+/* Застывший фон */
+/* .main-container {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full screen height */
+    height: 100vh; 
     box-sizing: border-box;
-    background: linear-gradient(250deg, #86B4F9, #FFFFFF); /* Horizontal gradient (left to right) */
-}
+    background: linear-gradient(250deg, #86B4F9, #FFFFFF); 
+    
+} */
+
+/* Анимированный градиент */
+.main-container {
+    position: relative;
+    background: linear-gradient(-45deg, #f5faff, #d0dff6, #acc6f6, #82a9f1);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
 
+  
 /* Top section of the main container (below the header) */
 .top-container {
     flex: 0 0 40%; /* Take up 40% of the height */
@@ -51,10 +69,10 @@
     height: 176px; /* Высота кнопки */
     font-size: 16px; /* Размер текста */
     color: white; /* Цвет текста */
-    background-color: #007AFF; /* Фон кнопки */
+    background: linear-gradient(135deg, #007AFF, #00a8ff);
     border: none; /* Без границ */
     border-radius: 20px; /* Скругленные углы */
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2); /* Тень кнопки */
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,9 +84,10 @@
 
 /* Эффект при наведении */
 .button:hover {
-    background-color: #005bb5;
+    background: linear-gradient(135deg, #005bb5, #0077cc);
     transform: scale(1.05); /* Увеличиваем кнопку при наведении */
 }
+
 
 /* First line style */
 .button .first-line {
@@ -94,6 +113,7 @@
     font-weight: bold; /* Make the text bold */
     text-align: center; /* Center the text */
     margin: 0; /* Remove any default margins */
+    text-shadow: 0 0 10px rgba(0, 122, 255, 0.7);
     
 }
 
