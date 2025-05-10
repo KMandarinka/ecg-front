@@ -30,8 +30,9 @@ const MainPage = () => {
     <div className="main-page-container">
       
       <AppHeader />
-
+      <div style={{ height: "20px" }}></div> {/*  компенсирует высоту AppHeader */}
       <MainComponent onShowModal={showModal} />
+
       <Modal
       visible={isModalVisible}
       footer={null}

@@ -6,8 +6,8 @@
 }
 
 .archive-content {
-  max-width: 1900px;
-  margin: 30px auto 0;
+  max-width: 1700px;
+  margin: 20px auto 0;
   padding: 30px 40px;
   background: #ffffff;
   border-radius: 10px;
@@ -112,7 +112,8 @@
   width: 100%;
   max-width: 96%;
   margin: 0 auto;
-  padding: 17px 0;
+  padding: 8px 0;
+  margin-bottom: 10px; 
   box-sizing: border-box;
   background-color: transparent;
   gap: 1000px;
@@ -122,7 +123,22 @@
   font-family: 'Podkova', serif;
   font-size: 24px;
   color: #007AFF;
+  ransition: color 0.3s ease, text-decoration 0.3s ease;
+  cursor: pointer;
 }
+
+
+.breadcrumb-link:hover {
+  color: #005fcc;
+  text-decoration: underline;
+}
+
+.breadcrumb-arrow {
+  margin: 0 8px;
+  vertical-align: middle;
+  color: #007AFF;
+}
+
 
 .contact-link {
   font-family: 'Frank Ruhl Libre', serif;
@@ -131,9 +147,9 @@
 }
 
 .contact-link:hover {
-  color: white;
+  color: #005fcc;
   transition: color 0.3s ease;
-  text-decoration-color: #ffffff;
+  text-decoration: underline;
 }
 
 .archive-title {

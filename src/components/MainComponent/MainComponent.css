@@ -19,6 +19,7 @@
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     min-height: 100vh;
+    padding-top: 300px
     
   }
   
@@ -170,17 +171,16 @@
     
 }
 
-/* Header container with links */
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Полная ширина */
-    padding: 30px 40px; /* Отступы внутри */
+    width: 100%;
+    padding: 0 40px; /* убрали вертикальные отступы */
     box-sizing: border-box;
-    background-color: transparent; /* Прозрачный фон */
-    
-}
+    background-color: transparent;
+    margin-top: 100px; /* ← чуть сдвигаем вниз */
+  }
 
 /* Breadcrumb link (left-aligned) */
 .breadcrumb {
@@ -205,7 +205,7 @@
 }
 /* Contact link hover effect */
 .contact-link:hover {
-    color: white; /* Меняем цвет текста на белый при наведении */
+    color: 005fcc; /* Меняем цвет текста на белый при наведении */
     transition: color 0.3s ease; /* Плавный переход */
     text-decoration-color: #ffffff; /* Цвет подчеркивания совпадает с текстом */
 }

@@ -26,10 +26,11 @@ const AppHeader = () => {
     <>
       <nav className="navbar">
         {/* Левая часть - Логотип */}
-        <div className="logo">
+        <div className="logo" onClick={() => navigate('/main')}>
           <LogoIcon className="logo-icon" />
           HeartON
         </div>
+
 
         {/* Правая часть - элементы */}
         <div className="right-section">

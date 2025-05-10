@@ -3,6 +3,9 @@ import { List, Spin } from "antd";
 import "antd/dist/antd.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import "./ArchivePage.css";
+import { FiChevronRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom"; 
+
 
 const ArchivePage = () => {
   const [patients, setPatients] = useState([]);
@@ -13,6 +16,8 @@ const ArchivePage = () => {
   const [patientFiles, setPatientFiles] = useState({});
   const [filesLoading, setFilesLoading] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
+  const navigate = useNavigate();
+
 
   const russianPlural = (count, word, cases = [2, 0, 1, 1, 1, 2]) => {
     return `${count} ${word}${
@@ -104,7 +109,14 @@ const ArchivePage = () => {
     <div className="archive-page-container">
       <AppHeader />
       <div className="header-container">
-        <span className="breadcrumb">Главная > Архив анализов > </span>
+      <span className="breadcrumb">
+        <span onClick={() => navigate("/main")} className="breadcrumb-link">
+          Главная
+        </span>
+        <FiChevronRight className="breadcrumb-arrow" />
+        <span>Архив анализов</span>
+      </span>
+
         <span className="contact-link">Остались вопросы? Напишите нам</span>
       </div>
 

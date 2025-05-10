@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../SelectPatientPage/SelectPatientPage.module.css";
-import styles from "./SelectPatientPage.module.css"; // Импорт модульных стилей
+import styles from "./SelectPatientPage.module.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FiSearch, FiUserPlus, FiUpload, FiUser } from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
 
 const SelectPatientPage = () => {
   const [query, setQuery] = useState("");
@@ -12,29 +14,30 @@ const SelectPatientPage = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // функция для русского склонения
+
   const russianPlural = (count, word, cases = [2, 0, 1, 1, 1, 2]) => {
     return `${count} ${word}${
       count % 100 > 4 && count % 100 < 20
         ? 'ов'
-        : ['', 'а', 'ов'][cases[Math.min(count % 10, 5)]]
-    }`;
+        : ['', 'а', 'ов'][cases[Math.min(count % 10, 5)]]}`;
   };
 
-  // Получаем переданный файл через navigate из FileUploadModal
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   useEffect(() => {
     if (location.state?.file) {
       setUploadedFile(location.state.file);
-      console.log(location.state.file);
     }
   }, [location.state]);
 
   const fetchPatients = async (query) => {
     setIsLoading(true);
     try {
-      var token = localStorage.getItem("token");
-
+      const token = localStorage.getItem("token");
       const response = await fetch("http://localhost:4000/api/v1/patients/list", {
         method: "PUT",
         headers: {
@@ -48,10 +51,7 @@ const SelectPatientPage = () => {
         })
       });
 
-      if (!response.ok) {
-        throw new Error("Ошибка при запросе пациентов.");
-      }
-
+      if (!response.ok) throw new Error("Ошибка при запросе пациентов.");
       const data = await response.json();
       return data.patients || [];
     } catch (error) {
@@ -63,15 +63,8 @@ const SelectPatientPage = () => {
   };
 
   const loadDefaultPatients = async () => {
-    setIsLoading(true);
-    try {
-      const defaultPatients = await fetchPatients("");
-      setPatients(defaultPatients);
-    } catch (error) {
-      console.error("Ошибка при загрузке пациентов:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    const defaultPatients = await fetchPatients("");
+    setPatients(defaultPatients);
   };
 
   useEffect(() => {
@@ -79,117 +72,120 @@ const SelectPatientPage = () => {
   }, []);
 
   const handleSearch = async () => {
-    setIsLoading(true);
     setHasSearched(true);
-    try {
-      const results = await fetchPatients(query);
-      setPatients(results);
-    } catch (error) {
-      console.error("Ошибка при загрузке пациентов:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    const results = await fetchPatients(query);
+    setPatients(results);
   };
 
   const handlePatientClick = async (patientId) => {
     if (!uploadedFile) {
-        alert("Файл не найден. Загрузите файл перед отправкой.");
-        return;
+      alert("Файл не найден. Загрузите файл перед отправкой.");
+      return;
     }
 
     try {
-        const formData = new FormData();
-        const token = localStorage.getItem("token");
+      const formData = new FormData();
+      const token = localStorage.getItem("token");
+      formData.append("patient_id", String(patientId));
+      formData.append("file", uploadedFile);
 
-        // Важно: Убедись, что ключи совпадают с теми, которые сервер ожидает
-        formData.append("patient_id", String(patientId)); // Преобразование patientId в строку
-        formData.append("file", uploadedFile); // Файл добавляется с ключом 'file'
+      const response = await fetch("http://localhost:4000/api/v1/analyse/upload", {
+        method: "POST",
+        body: formData,
+        headers: { "Authorization": `${token}` }
+      });
 
-        const response = await fetch("http://localhost:4000/api/v1/analyse/upload", {
-            method: "POST",
-            body: formData,
-            headers: {
-                "Authorization": `${token}` 
-            }
-        });
+      if (response.status !== 201) {
+        const errorMessage = await response.text();
+        throw new Error(`Ошибка при загрузке файла на сервер: ${errorMessage}`);
+      }
 
-        if (response.status !== 201) {  // Сервер должен вернуть 201 при успешной загрузке
-            const errorMessage = await response.text();
-            throw new Error(`Ошибка при загрузке файла на сервер: ${errorMessage}`);
-        }
-
-        const responseData = await response.json();
-        console.log("Файл успешно загружен:", responseData);
-        alert("Файл успешно загружен!");
-
-        // Перенаправление на следующую страницу или обновление списка пациентов
-        navigate(`/patient/${patientId}`);
+      const responseData = await response.json();
+      console.log("Файл успешно загружен:", responseData);
+      navigate(`/patient/${patientId}`);
     } catch (error) {
-        console.error("Ошибка при отправке файла:", error);
-        alert("Ошибка при отправке файла.");
+      console.error("Ошибка при отправке файла:", error);
+      alert("Ошибка при отправке файла.");
     }
-};
+  };
 
+  return (
+    <div className={styles.pageContainer}>
+      <AppHeader />
 
-return (
-  <div className={styles.pageContainer}>
-    <AppHeader />
-    <div className={styles.headerContainer}>
-      <span className={styles.breadcrumb}>Главная > Ввод данных > </span>
-      <span className={styles.contactLink}>Остались вопросы? Напишите нам</span>
-    </div>
+      <div className={styles.headerContainer}>
+      <span className={styles.breadcrumb}>
+        <span onClick={() => navigate("/main")} className={styles.breadcrumbLink}>
+          Главная
+        </span>
+        <FiChevronRight className={styles.breadcrumbArrow} />
+        <span>Ввод данных</span>
+      </span>
 
-    <h1 className={styles.pageTitle}>Введите данные пациента</h1>
-    
-    <div className={styles.searchBar}>
-      <input
-        type="text"
-        placeholder="ФИО пациента"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className={styles.searchInput}
-      />
-      <button className={styles.searchButton} onClick={handleSearch}>
-        Поиск
-      </button>
-      <button
-        className={styles.createButton}
-        onClick={() => navigate("/add-patient")}
-      >
-        Создать пациента
-      </button>
-    </div>
+        <span className={styles.contactLink}>Остались вопросы? Напишите нам</span>
+      </div>
 
-    <div className={styles.searchResultContainer}>
-      <p className={styles.searchResult}>
-        Найдено {russianPlural(patients.length, 'пациент')}
-      </p>
-    </div>
+      <div className={styles.mainContent}>
+        <h1 className={styles.pageTitle}>Введите данные пациента</h1>
 
-    <div className={styles.patientList}>
-      {isLoading ? (
-        <p>Загрузка...</p>
-      ) : (
-        <div className={styles.scrollableList}>
-          {patients.map((patient) => {
-            const patientId = patient.patient_id || patient.id || patient._id;
-            return (
-              <div
-                key={patientId}
-                className={styles.patientItem}
-                onClick={() => handlePatientClick(patientId)}
-              >
-                <p><strong>Имя:</strong> {patient.name}</p>
-                <p><strong>Фамилия:</strong> {patient.surname}</p>
-                <p><strong>День рождения:</strong> {new Date(patient.birthday).toLocaleDateString('ru-RU')}</p>
-              </div>
-            );
-          })}
+        <div className={styles.searchBar}>
+          <input
+            type="text"
+            placeholder="ФИО пациента"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className={styles.searchInput}
+          />
+          <button className={styles.searchButton} onClick={handleSearch}>
+            <FiSearch className={styles.icon} />
+            Поиск
+          </button>
+          <button
+            className={styles.createButton}
+            onClick={() => navigate("/add-patient")}
+          >
+            <FiUserPlus className={styles.icon} />
+            Создать пациента
+          </button>
         </div>
-      )}
+
+        {uploadedFile && (
+          <div className={styles.fileInfo}>
+            <FiUpload className={styles.icon} />
+            <span>Выбран файл: {uploadedFile.name}</span>
+          </div>
+        )}
+
+        <div className={styles.searchResultContainer}>
+          <p>Найдено {russianPlural(patients.length, 'пациент')}</p>
+        </div>
+
+        <div className={styles.patientList}>
+          {isLoading ? (
+            <div className={styles.spinner}></div>
+          ) : (
+            <div className={styles.scrollableList}>
+              {patients.map((patient) => {
+                const patientId = patient.patient_id || patient.id || patient._id;
+                return (
+                  <div
+                    key={patientId}
+                    className={styles.patientItem}
+                    onClick={() => handlePatientClick(patientId)}
+                  >
+                    <p><strong><FiUser /> Имя:</strong> {patient.name}</p>
+                    <p><strong>Фамилия:</strong> {patient.surname}</p>
+                    <p><strong>День рождения:</strong> {new Date(patient.birthday).toLocaleDateString('ru-RU')}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default SelectPatientPage;

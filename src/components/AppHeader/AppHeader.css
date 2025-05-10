@@ -39,6 +39,13 @@ body {
   align-items: center;
 }
 
+.logo:hover {
+  color: #005fcc;
+  transform: scale(1.05);
+  transition: color 0.3s, transform 0.3s;
+}
+
+
 /* SVG icon in the logo */
 .logo-icon {
   margin-right: 10px;
