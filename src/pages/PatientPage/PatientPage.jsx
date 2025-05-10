@@ -5,8 +5,11 @@ import SignalInfo from '../../components/SignalInfo/SignalInfo';
 import Conclusion from '../../components/Conclusion/Conclusion'; // Импортируем новый компонент
 import styles from './PatientPage.module.css';
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
+import { useNavigate, useLocation } from "react-router-dom";
+import { FiChevronRight } from "react-icons/fi";
 
 const PatientPage = () => {
+    const navigate = useNavigate();
     const patient = {
         name: 'Смирнов Андрей Аристархович',
         data: 62,
@@ -20,10 +23,18 @@ const PatientPage = () => {
         <div className={styles["patient-page"]}>
             <AppHeader />
             <div className={styles["main-body-container"]}>
-                <div className={styles["header-container"]}>
-                    <span className={styles["breadcrumb"]}>Главная > Ввод данных > Страница пациента > </span>
-                    <span className={styles["contact-link"]}>Остались вопросы? Напишите нам</span>
+                <div className={styles.headerContainer}>
+                      <span className={styles.breadcrumb}>
+                        <span onClick={() => navigate("/main")} className={styles.breadcrumbLink}>
+                          Главная
+                        </span>
+                        <FiChevronRight className={styles.breadcrumbArrow} />
+                        <span>Страница пациента</span>
+                      </span>
+                
+                        <span className={styles.contactLink}>Остались вопросы? Напишите нам</span>
                 </div>
+
                 <div className={styles["content-container"]}>
                     <div className={styles["left-column"]}>
                         <PatientInfo patient={patient} />

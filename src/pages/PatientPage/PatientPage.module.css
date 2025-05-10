@@ -14,48 +14,56 @@
   padding: 20px;
 }
 
-.header-container {
+.headerContainer {
   display: flex;
+  flex-wrap: wrap; /* добавлено */
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 30px 40px;
-  box-sizing: border-box;
+  padding: 30px 23px;
   background-color: transparent;
-  text-align: initial;
+  margin-bottom: -5px;
   margin-top: 60px;
-  margin-bottom: 20px; /* Добавляем отступ снизу */
+  gap: 10px; /* чтобы элементы не слипались при переносе */
+}
+
+.breadcrumbArrow {
+  margin: 0 8px;
+  vertical-align: middle;
+  color: #007AFF;
 }
 
 .breadcrumb {
   font-family: 'Podkova', serif;
-  font-size: 20px;
+  font-size: 24px;
   color: #007AFF;
-  text-align: left;
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-.contact-link {
+.breadcrumbLink:hover {
+  color: #005fcc;
+  text-decoration: underline;
+}
+
+.contactLink {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 20px;
   color: #515974;
-  text-align: right;
-  text-decoration-line: underline;
-  text-decoration-color: #515974;
-  margin-bottom: 10px;
 }
 
-.contact-link:hover {
-  color: white;
+.contactLink:hover {
+  color: #005fcc;
   transition: color 0.3s ease;
   text-decoration-color: #ffffff;
+  text-decoration: underline;
 }
 
 .content-container {
   display: flex;
   gap: 20px;
   padding: 0 20px;
-  margin-top: -37px;
+  margin-top: -10px;
   align-items: stretch; /* Это значение по умолчанию, но важно для понимания */
 }
 
