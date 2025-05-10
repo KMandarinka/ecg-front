@@ -5,6 +5,8 @@ import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FiSearch, FiUserPlus, FiUpload, FiUser } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
+import { FiSkipForward } from "react-icons/fi";
+
 
 const SelectPatientPage = () => {
   const [query, setQuery] = useState("");
@@ -183,6 +185,17 @@ const SelectPatientPage = () => {
             </div>
           )}
         </div>
+      </div>
+        
+      <div className={styles.skipStepWrapper}>
+      <button
+        className={styles.skipStepButton}
+        onClick={() => navigate("/patient")}
+      >
+        <FiSkipForward style={{ fontSize: "22px" }} />
+        Пропустить
+      </button>
+
       </div>
 
       <footer className={styles["app-footer"]}>

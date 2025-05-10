@@ -251,3 +251,34 @@
   color: #888;
   font-size: 14px;
 }
+
+.skipStepWrapper {
+  position: fixed;
+  bottom: 80px;
+  right: calc((100% - 1300px) / 2 - 300px); /* выравниваем между блоком и экраном */
+  z-index: 1000;
+}
+
+
+.skipStepButton {
+  background-color: #007AFF;
+  color: white;
+  font-size: 20px;
+  padding: 16px 36px;
+  border: none;
+  border-radius: 44px;
+  cursor: pointer;
+  font-family: 'Podkova', serif;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 6px 12px rgba(0, 122, 255, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skipStepButton:hover {
+  background-color: #005FCC;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 122, 255, 0.35);
+}
+
