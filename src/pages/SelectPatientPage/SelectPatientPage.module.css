@@ -18,6 +18,7 @@
   padding: 30px 40px;
   background-color: transparent;
   margin-bottom: -5px; /* добавляем минимальный отступ снизу */
+  margin-top: 10px; /* добавляем минимальный отступ снизу */
 }
 
 .breadcrumb {
@@ -242,4 +243,11 @@
   margin: 0 8px;
   vertical-align: middle;
   color: #007AFF;
+}
+
+.app-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
 }

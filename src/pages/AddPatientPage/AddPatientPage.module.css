@@ -1,97 +1,73 @@
 .app-add-patient-page {
-  text-align: center;
-  width: 100%;
+  font-family: 'Podkova', serif;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
   box-sizing: border-box;
-  width: 100%; /* Гарантируем, что страница занимает всю ширину */
-  min-height: 100vh; /* Высота страницы на весь экран */
-  box-sizing: border-box; /* Включаем padding в расчёт размеров */
 }
 
 .app-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 40px;
-  width: 100%; /* Полная ширина */
-  text-align: initial; /* Сбрасываем центрирование */
+  width: 100%;
+  padding: 30px 23px;
+  background-color: transparent;
+  margin-bottom: -5px; /* добавляем минимальный отступ снизу */
+  margin-top: 40px; /* добавляем минимальный отступ снизу */
 }
 
 .app-breadcrumb {
   font-family: 'Podkova', serif;
-  font-size: 20px;
+  font-size: 24px;
   color: #007AFF;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #005fcc;
+  text-decoration: underline;
 }
 
 .app-contact-link {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 18px;
+  font-size: 20px;
   color: #515974;
 }
 
 .app-contact-link:hover {
-  color: #007AFF;
+  color: #005fcc;
   transition: color 0.3s ease;
+  text-decoration-color: #ffffff;
+  text-decoration: underline;
 }
 
 .app-info-container {
+  width: 100%;
+  max-width: 1200px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-
 
 .app-h1 {
   font-family: 'Podkova', serif;
   font-size: 45px;
   color: #515974;
+  margin-bottom: 15px;
+  text-align: center;
   font-weight: 500;
-}
-
-
-.app-form-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 равных столбца */
-  gap: 30px; /* Отступы между элементами */
-  justify-content: center; /* Центрируем столбцы горизонтально */
-  align-items: center; /* Центрируем элементы вертикально */
-}
-
-.app-form-label {
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  color: #515974;
-  align-items: start;
-}
-
-.app-form-input {
-  height: 71px;
-  width: 550px;
-  border: 1px solid #007AFF;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 20px;
-
-}
-
-.app-form-button {
-  margin-top: 60px;
-  background-color: #007AFF;
-  color: white;
-  font-size: 28px;
-  border: none;
-  border-radius: 44px;
-  padding: 17px 70px;
-  cursor: pointer;
-
-}
-
-.app-form-button:hover {
-  background-color: #005BB5;
 }
 
 .app-back-button {
   display: inline-flex;
   gap: 15px;
+  font-family: 'Podkova', serif;
   font-size: 30px;
   color: #515974;
   background: none;
@@ -100,13 +76,13 @@
   padding: 1px 10px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
-  margin-left: -430px; /* Смещение влево */
+  margin: 0 auto;
   align-items: center; 
 
 }
 
 .app-back-button:hover {
-  background-color: #C0CAD5;
+  background-color: #d9e0e7;
   color: white;
 }
 
@@ -121,11 +97,99 @@
   fill: white; /* Меняет цвет иконки на белый при наведении */
 }
 
-.app-form-container {
+
+ /* колонки*/
+.app-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* фиксируем 3 столбца */
+  gap: 40px 60px; /* увеличим расстояние */
+}
+
+
+.app-form-label {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрирование по горизонтали */
-  justify-content: center; /* Центрирование по вертикали */
-  padding: 20px 50px; /* Отступы внутри контейнера */
-  margin: 0 auto; /* Центрирование по горизонтали */
+  font-size: 20px;
+  color: #515974;
+  font-family: 'Frank Ruhl Libre', serif;
+}
+
+.app-form-input {
+  height: 58px;
+  padding: 10px;
+  font-size: 19px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  margin-top: 5px;
+  font-family: 'Frank Ruhl Libre', serif;
+}
+
+.app-form-input:focus {
+  outline: none;
+  border-color: #007AFF;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.app-form-button {
+  margin-top: 30px;
+  background-color: #007AFF;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Frank Ruhl Libre', serif;
+}
+
+.app-form-button:hover {
+  background-color: #005BB5;
+}
+
+.app-form-container {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  margin-top: 0px; /* отступ сверху */
+}
+
+.app-info-container {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.app-back-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  
+}
+.app-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+
+.breadcrumbArrow {
+  margin: 0 8px;
+  vertical-align: middle;
+  color: #007AFF;
+}
+
+.app-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
 }

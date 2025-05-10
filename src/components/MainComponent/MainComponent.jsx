@@ -41,6 +41,8 @@ const MainComponent = ({ onShowModal }) => {
 
         <button className="how-it-works-button">Как работает программа?</button>
       </div>
+
+      
     </div>
   );
 };

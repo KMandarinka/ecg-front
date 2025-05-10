@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./AddPatientPage.module.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { ReactComponent as BackIcon } from '../../assets/back.svg'; // Иконка "Закрыть"
+import { FiChevronRight } from "react-icons/fi";
 
 const AddPatientPage = () => {
   const navigate = useNavigate();
@@ -67,12 +68,26 @@ const AddPatientPage = () => {
     <div className={styles["app-add-patient-page"]}>
       <AppHeader />
       <div className={styles["app-header-container"]}>
-        <span className={styles["app-breadcrumb"]}>Главная > Ввод данных ></span>
-        <span className={styles["app-contact-link"]}>Остались вопросы? Напишите нам</span>
+            <span className={styles["app-breadcrumb"]}>
+              <span onClick={() => navigate("/main")} className={styles["breadcrumbLink"]}>
+                Главная
+              </span>
+              <FiChevronRight className={styles["breadcrumbArrow"]} />
+              <span>Ввод данных</span>
+            </span>
+      
+              <span className={styles["app-contact-link"]}>Остались вопросы? Напишите нам</span>
+            </div>
+
+      <div className={styles["app-form-container"]}>
+      <div className={styles["app-info-container"]}>
+      <h1 className={styles["app-h1"]}>
+        🩺 Введите данные нового пациента
+      </h1>
+
       </div>
 
-      <div className={styles["app-info-container"]}>
-        <h1 className={styles["app-h1"]}>Введите данные нового пациента</h1>
+      <div className={styles["app-back-wrapper"]}>
         <button
           className={styles["app-back-button"]}
           onClick={() => navigate("/select-patient")}
@@ -82,7 +97,6 @@ const AddPatientPage = () => {
         </button>
       </div>
 
-      <div className={styles["app-form-container"]}>
         <form>
           <div className={styles["app-form-grid"]}>
             <label className={styles["app-form-label"]}>
@@ -184,15 +198,23 @@ const AddPatientPage = () => {
               />
             </label>
           </div>
-          <button
-            className={styles["app-form-button"]}
-            type="button"
-            onClick={handleSave}
-          >
-            Сохранить
-          </button>
+          <div className={styles["app-button-wrapper"]}>
+            <button
+              className={styles["app-form-button"]}
+              type="button"
+              onClick={handleSave}
+            >
+              Сохранить
+            </button>
+          </div>
+
         </form>
       </div>
+
+      <footer className={styles["app-footer"]}>
+        <p>© 2025 HeartON. Все права защищены.</p>
+      </footer>
+
     </div>
   );
 };

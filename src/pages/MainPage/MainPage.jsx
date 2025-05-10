@@ -46,7 +46,6 @@ const MainPage = () => {
     >
       <FileUploadModal />
     </Modal>
-
     </div>
   );
 };

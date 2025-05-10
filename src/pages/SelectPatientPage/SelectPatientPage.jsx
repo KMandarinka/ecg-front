@@ -184,6 +184,11 @@ const SelectPatientPage = () => {
           )}
         </div>
       </div>
+
+      <footer className={styles["app-footer"]}>
+        <p>© 2025 HeartON. Все права защищены.</p>
+      </footer>
+
     </div>
   );
 };
