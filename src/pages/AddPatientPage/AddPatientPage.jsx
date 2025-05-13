@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./AddPatientPage.module.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { ReactComponent as BackIcon } from '../../assets/back.svg'; // Иконка "Закрыть"
 import { FiChevronRight } from "react-icons/fi";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AddPatientPage = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const [file] = useState(state?.file || null);
+
   // const [formData, setFormData] = useState({
   //   name: "",
   //   surname: "",
@@ -54,7 +57,9 @@ const AddPatientPage = () => {
       });
 
       if (response.status === 201) {
-        navigate("/select-patient");
+        
+        navigate("/select-patient", { state: { file } });
+
       } else {
         const data = await response.json();
         console.error('Ошибка при сохранении пациента:', data);
@@ -90,7 +95,7 @@ const AddPatientPage = () => {
       <div className={styles["app-back-wrapper"]}>
         <button
           className={styles["app-back-button"]}
-          onClick={() => navigate("/select-patient")}
+          onClick={() => navigate("/select-patient", { state: { file } })}
         >
           <BackIcon className={styles["app-back-icon"]} />
           <span>Назад к поиску пациентов</span>

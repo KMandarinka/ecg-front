@@ -80,36 +80,66 @@ const SelectPatientPage = () => {
   };
 
   const handlePatientClick = async (patientId) => {
-    if (!uploadedFile) {
-      alert("Файл не найден. Загрузите файл перед отправкой.");
-      return;
-    }
+  if (!uploadedFile) {
+    alert("Файл не найден. Загрузите файл перед отправкой.");
+    return;
+  }
 
-    try {
-      const formData = new FormData();
-      const token = localStorage.getItem("token");
-      formData.append("patient_id", String(patientId));
-      formData.append("file", uploadedFile);
+  try {
+    const formData = new FormData();
+    const token = localStorage.getItem("token");
+    formData.append("patient_id", String(patientId));
+    formData.append("file", uploadedFile);
 
-      const response = await fetch("http://localhost:4000/api/v1/analyse/upload", {
+    const response = await fetch(
+      "http://localhost:4000/api/v1/analyse/upload",
+      {
         method: "POST",
         body: formData,
-        headers: { "Authorization": `${token}` }
-      });
-
-      if (response.status !== 201) {
-        const errorMessage = await response.text();
-        throw new Error(`Ошибка при загрузке файла на сервер: ${errorMessage}`);
+        headers: { "Authorization": token },
       }
+    );
 
-      const responseData = await response.json();
-      console.log("Файл успешно загружен:", responseData);
-      navigate(`/patient`);
-    } catch (error) {
-      console.error("Ошибка при отправке файла:", error);
-      alert("Ошибка при отправке файла.");
+    if (response.status !== 201) {
+      // Если не 201, читаем текстовую ошибку
+      const errorMessage = await response.text();
+      throw new Error(`Ошибка при загрузке файла на сервер: ${errorMessage}`);
     }
-  };
+
+    // Читаем тело один раз
+    const files = await response.json();
+    console.log("Ответ от сервера:", files);
+
+    // Извлекаем первый элемент массива
+    const fileMeta = Array.isArray(files) && files.length > 0 ? files[0] : null;
+    const filename = fileMeta?.filename || '—';
+
+    // Находим данные по пациенту
+    const patient = patients.find(
+      (p) => (p.patient_id || p.id || p._id) === patientId
+    );
+
+    // Сохраняем ФИО, дату рождения и имя файла
+    localStorage.setItem(
+      "patientName",
+      `${patient.name} ${patient.surname}`
+    );
+    localStorage.setItem("patientBirthday", patient.birthday);
+    localStorage.setItem("filename", filename);
+
+    console.log("Данные сохранены в localStorage:", {
+      patientName: localStorage.getItem("patientName"),
+      patientBirthday: localStorage.getItem("patientBirthday"),
+      filename: localStorage.getItem("filename"),
+    });
+
+    navigate(`/patient`);
+  } catch (error) {
+    console.error("Ошибка при отправке файла:", error);
+    alert("Ошибка при отправке файла.");
+  }
+};
+
 
   return (
     <div className={styles.pageContainer}>
@@ -145,7 +175,7 @@ const SelectPatientPage = () => {
           </button>
           <button
             className={styles.createButton}
-            onClick={() => navigate("/add-patient")}
+            onClick={() => navigate("/add-patient", { state: { file: uploadedFile } })}
           >
             <FiUserPlus className={styles.icon} />
             Создать пациента
@@ -190,9 +220,9 @@ const SelectPatientPage = () => {
       <div className={styles.skipStepWrapper}>
       <button
         className={styles.skipStepButton}
-        onClick={() => navigate("/patient")}
+        onClick={() => handlePatientClick(1)}
       >
-        <FiSkipForward style={{ fontSize: "22px" }} />
+        <FiSkipForward />
         Пропустить
       </button>
 
