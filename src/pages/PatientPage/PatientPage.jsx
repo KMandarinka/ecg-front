@@ -12,8 +12,8 @@ const PatientPage = () => {
     const navigate = useNavigate();
     const patient = {
         name: 'Смирнов Андрей Аристархович',
-        data: 62,
-        weight: 97,
+        data: '22.11.2003',
+        weight: 57,
         height: 197,
         phone: '+7 416 723 49 65',
         email: 'hjl@mail.ru'

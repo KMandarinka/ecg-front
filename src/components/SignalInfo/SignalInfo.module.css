@@ -19,14 +19,15 @@
 .signal-title {
   margin: 0;
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 26px;
+  font-size: 24px;
   color: #515974;
   text-align: center;
 }
 
 /* Основной блок */
 .signal-info-body {
-  padding: 20px;
+    /* сверху — 10px, справа/слева — 20px, снизу — 20px */
+  padding: 5px 20px 5px;
   box-sizing: border-box;
 }
 
@@ -40,22 +41,26 @@
 /* Подзаголовки категорий */
 .category-title {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 22px;
+  font-size: 21px;
   color: #007AFF;
   font-weight: bold;
   margin: 0 0 5px;
 }
-
 .parameter-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 5px 0;
+
+  /* новый фон и отступы */
+  background-color: #f4f4f6;
+  padding: 1px 12px;
+  border-radius: 4px;
+  margin: 6px 0;
 }
 
 .sub-label {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 22px;
+  font-size: 21px;
   color: #515974;
   font-weight: normal;
   text-align: left;
@@ -65,7 +70,7 @@
 
 .sub-value {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 21px;
+  font-size: 20px;
   color: #007AFF;
   font-weight: bold;
   text-align: right;
@@ -80,8 +85,8 @@
   font-size: 24px;
   color: #007AFF;
   text-align: right;
-  margin-top: -10px;
-  margin-bottom: -10px; /* Убираем нижний отступ */
+  margin-top: -15px;
+  margin-bottom: -5px; /* Убираем нижний отступ */
   text-decoration: none;
 }
 

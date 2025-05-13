@@ -6,6 +6,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     width: 100%;
     overflow: hidden;
+    min-height: 255px; /* или любое нужное число */
   }
   
   /* Шапка */
@@ -19,7 +20,7 @@
   .conclusion-title {
     margin: 0;
     font-family: 'Frank Ruhl Libre', serif;
-    font-size: 26px;
+    font-size: 24px;
     color: #515974;
     text-align: center;
   }
@@ -39,7 +40,7 @@
   
   .conclusion-label {
     font-family: 'Frank Ruhl Libre', serif;
-    font-size: 22px;
+    font-size: 25px;
     color: #007AFF;
     font-weight: bold;
     text-align: left;
@@ -48,9 +49,57 @@
   
   .conclusion-value {
     font-family: 'Frank Ruhl Libre', serif;
-    font-size: 21px;
+    font-size: 25px;
     color: #515974;
     font-weight: bold;
     text-align: right;
     flex-shrink: 0;
   }
+
+  /* 1. Делаем контейнер колоночным флексом */
+.conclusion-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 255px; /* или ваше нужное значение */
+}
+
+/* 2. Тело растягиваем и центрируем по вертикали */
+.conclusion-body {
+  flex: 1;                    /* займёт всё доступное место под шапкой */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* центрирует содержимое внутри .conclusion-body */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Акцентная полоса слева */
+.conclusion-title-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: #007AFF;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.conclusion-field {
+  padding: 16px;
+  margin: 0;
+  border-radius: 8px;
+  background: #F5F8FC;
+  transition: background 0.2s ease;
+  border: 1px solid #e9e9f0;
+}
+
+.conclusion-field + .conclusion-field {
+  margin-top: 12px;
+}
+
+/* .conclusion-field:hover {
+  background: #E9EFF6;
+  cursor: default;
+} */

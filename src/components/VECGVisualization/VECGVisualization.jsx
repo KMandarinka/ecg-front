@@ -1,6 +1,6 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import ecgData from "../../assets/output_json.json";
+import ecgData from "../../assets/vecg_json.json";
 import styles from "./VECGVisualization.module.css"; // Импорт модульных стилей
 
 const VECGVisualization = () => {

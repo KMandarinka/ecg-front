@@ -1,6 +1,7 @@
   import React from 'react';
   import styles from './SignalInfo.module.css';
 
+
   const SignalInfo = () => (
     <div className={styles["signal-info"]}>
       {/* Верхняя панель с заголовком */}

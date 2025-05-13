@@ -17,13 +17,14 @@ const PatientInfo = ({ patient }) => (
       <p className={styles["value"]}>{patient.data}</p>
       <hr className={styles["divider"]} />
 
+
+      {/* можно вместо например ИМЯ ФАЙЛА */}
       <p className={styles["label"]}>Вес</p>
       <p className={styles["value"]}>{patient.weight}</p>
 
-      <p className={styles["label"]}>Рост</p>
-      <p className={styles["value"]}>{patient.height}</p>
-
       <hr className={styles["divider"]} />
+      <p className={styles["label"]}>Телефон</p>
+      <p className={styles["value"]}>{patient.phone}</p>
 
       <p className={styles["label"]}>Почта</p>
       <p className={styles["value"]}>{patient.email}</p>

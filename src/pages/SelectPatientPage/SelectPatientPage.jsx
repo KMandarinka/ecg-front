@@ -104,7 +104,7 @@ const SelectPatientPage = () => {
 
       const responseData = await response.json();
       console.log("Файл успешно загружен:", responseData);
-      navigate(`/patient/${patientId}`);
+      navigate(`/patient`);
     } catch (error) {
       console.error("Ошибка при отправке файла:", error);
       alert("Ошибка при отправке файла.");

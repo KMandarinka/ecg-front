@@ -1,72 +1,114 @@
-.ecg-container {
-    /* Аналогичная стилистика, как в других компонентах */
-    position: relative;
-    background-color: #F9F9F9;
-    border-radius: 5px;
-    border: 1px solid #007AFF; /* Синяя рамка по всему периметру */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    width: 100%;
-    overflow: hidden; /* Чтобы скругления углов не обрезались */
-  }
-  
-  /* Шапка (заголовок) */
-  .ecg-title-container {
-    background-color: #E9EFF6;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #007AFF;
-  }
-  
-  /* Заголовок: шрифт , цвет #515974, выравнивание по центру */
-  .ecg-title {
-    margin: 0;
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 26px;  /* при желании 32px, как в других блоках */
-    color: #515974;
-    text-align: center;
-  }
-  
-  /* Основная часть с графиками */
-  .ecg-body {
-    padding: 20px;
-    box-sizing: border-box;
-    max-height: 36vh; /* Если нужно ограничить высоту, уберите/измените по вкусу */
-    overflow-y: auto; /* Вертикальная прокрутка */
-    
-  }
-  
-  .lead-block {
-    margin-bottom: 20px; /* Уменьшено расстояние между блоками */
-    padding: 10px; /* Уменьшаем отступы внутри */
-    
+.ecgContainer {
+  width: 100%;
+  max-width: 65vw;
+  background: #f9f9f9;
+  border: 1px solid #007AFF;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
 
-  }
-  
-  /* Заголовок отведения: цвет #007AFF, чтобы выделить */
-  .lead-title {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 24px;
-    color: #007AFF;
-    font-weight: bold;
-    text-align: center;
-    margin-top: -10px;
-  }
-  
-  .details-text {
-    display: block;
-    text-align: right; /* Выравниваем текст по правому краю */
-    margin: 10px 20px; /* Отступы от края */
-    font-size: 24px;
-    font-family: 'Frank Ruhl Libre', serif;
-    color: #007aff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    margin-top: -10px;
-  }
-  
-  .details-text:hover {
-    color: #005bb5; /* Меняем цвет при наведении */
-    text-decoration: underline; /* Подчеркивание при наведении */
-  }
-  
+.titleContainer {
+  position: relative;
+  background: #E9EFF6;
+  padding: 10px 20px;
+  border-bottom: 1px solid #007AFF;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 26px;
+  color: #515974;
+  text-align: center;
+}
+
+
+.speedSelector {
+  position: absolute;
+  right: 20px;         /* совпадает с padding контейнера */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;           /* сбросим все маргины */
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 18px;
+}
+
+.ecgBody {
+  width: 100%;
+  max-height: 41vh; /* Ограничение по высоте */
+  overflow: auto; /* Включаем ОБА скролла */
+  padding: 10px;
+}
+
+.ecgScrollContainer {
+  width: max-content; /* Ширина по содержимому */
+  min-width: 100%; /* Минимум на всю ширину */
+}
+
+.leadBlock {
+  display: block;
+  margin-bottom: -10px;
+}
+
+.leadHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -15px;
+}
+
+.leadTitle {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 20px;
+  color: #007AFF;
+}
+
+.leadSpeed {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 16px;
+  color: #777;
+}
+
+.plotWrapper {
+  width: 100%;
+  overflow-x: auto; /* Горизонтальный скролл для графиков */
+}
+
+.plotWrapper canvas {
+  display: block;
+  height: 200px;
+  background: transparent;
+}
+
+.detailsText {
+  display: block;
+  text-align: right;
+  margin: 10px 20px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 24px;
+  color: #007AFF;
+  text-decoration: none;
+}
+
+.detailsText:hover {
+  text-decoration: underline;
+}
+
+/* Фоновая сетка */
+.ecgScrollContainer {
+  background-image:
+    linear-gradient(to right, #f0c0a0 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, #f0c0a0 0.5px, transparent 0.5px),
+    linear-gradient(to right, #e09070 1px, transparent 1px),
+    linear-gradient(to bottom, #e09070 1px, transparent 1px);
+  background-size:
+    3.78px 3.78px,
+    3.78px 3.78px,
+    18.9px 18.9px,
+    18.9px 18.9px;
+  background-position:
+    0 0, 0 0, -0.5px -0.5px, -0.5px -0.5px;
+}
