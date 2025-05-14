@@ -1,3 +1,5 @@
+/* src/components/ECGVisualization/ECGVisualization.module.css */
+
 .ecgContainer {
   width: 100%;
   max-width: 65vw;
@@ -23,64 +25,85 @@
   text-align: center;
 }
 
-
 .speedSelector {
   position: absolute;
-  right: 20px;         /* совпадает с padding контейнера */
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0;           /* сбросим все маргины */
+  margin: 0;
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 18px;
 }
 
 .ecgBody {
+  position: relative;
   width: 100%;
-  max-height: 41vh; /* Ограничение по высоте */
-  overflow: auto; /* Включаем ОБА скролла */
+  max-height: 41vh;      /* ограничиваем высоту контейнера */
   padding: 10px;
+  /* overflow: hidden; */ /* можно убрать, т.к. не влияет */
+}
+
+/* В этой обёртке теперь оба скролла */
+.ecgScrollWrapper {
+  width: 100%;
+  max-height: calc(41vh - 20px); /* чуть меньше, учитывая паддинги ecgBody */
+  overflow: auto;                  /* и по горизонтали, и по вертикали */
 }
 
 .ecgScrollContainer {
-  width: max-content; /* Ширина по содержимому */
-  min-width: 100%; /* Минимум на всю ширину */
+  width: max-content;
+  min-width: 100%;
+  background-image:
+    linear-gradient(to right, #f0c0a0 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, #f0c0a0 0.5px, transparent 0.5px),
+    linear-gradient(to right, #e09070 1px, transparent 1px),
+    linear-gradient(to bottom, #e09070 1px, transparent 1px);
+  background-size:
+    3.78px 3.78px,
+    3.78px 3.78px,
+    18.9px 18.9px,
+    18.9px 18.9px;
+  background-position:
+    0 0, 0 0, -0.5px -0.5px, -0.5px -0.5px;
+  position: relative;
 }
 
 .leadBlock {
   display: block;
-  margin-bottom: -10px;
+  margin-bottom: 20px;
 }
 
 .leadHeader {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: -15px;
-}
-
-.leadTitle {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 20px;
-  color: #007AFF;
-}
-
-.leadSpeed {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 16px;
-  color: #777;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .plotWrapper {
   width: 100%;
-  overflow-x: auto; /* Горизонтальный скролл для графиков */
+  overflow-x: auto;
 }
 
 .plotWrapper canvas {
   display: block;
   height: 200px;
   background: transparent;
+}
+
+.zoomButtons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  z-index: 20;
+  background: rgba(255,255,255,0.8);
+  border-radius: 4px;
 }
 
 .detailsText {
@@ -95,20 +118,4 @@
 
 .detailsText:hover {
   text-decoration: underline;
-}
-
-/* Фоновая сетка */
-.ecgScrollContainer {
-  background-image:
-    linear-gradient(to right, #f0c0a0 0.5px, transparent 0.5px),
-    linear-gradient(to bottom, #f0c0a0 0.5px, transparent 0.5px),
-    linear-gradient(to right, #e09070 1px, transparent 1px),
-    linear-gradient(to bottom, #e09070 1px, transparent 1px);
-  background-size:
-    3.78px 3.78px,
-    3.78px 3.78px,
-    18.9px 18.9px,
-    18.9px 18.9px;
-  background-position:
-    0 0, 0 0, -0.5px -0.5px, -0.5px -0.5px;
 }
