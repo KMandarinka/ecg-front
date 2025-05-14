@@ -1,16 +1,18 @@
-/* Основной контейнер для 3D-визуализации */
+/* Основной контейнер */
 .ecg-3d-container {
-    position: relative;
-    /* background-color: #f9f9f9; */
-    border-radius: 5px;
-    border: 1px solid #007aff;
-    background: linear-gradient(135deg, #ffffff, #f0f4f8);
-  box-shadow: 
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #007aff;
+  background: linear-gradient(135deg, #ffffff, #f0f4f8);
+  box-shadow:
     8px 8px 16px rgba(0,0,0,0.05),
     -8px -8px 16px rgba(255,255,255,0.8);
-    width: 100%;
-    overflow: hidden;
-    height: calc(100vh - 150px); /* Учитываем отступ для панели задач */
+  width: 100%;
+  /* убрали overflow:hidden, чтобы график не обрезался */
+  /* overflow: hidden; */
+  height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -31,28 +33,36 @@
   text-align: center;
 }
 
-/* Основная часть с графиками */
+/* Основная часть с графиком */
 .ecg-body {
-    padding: 20px;
-    box-sizing: border-box;
-    max-height: calc(100vh - 180px); /* Учитываем высоту заголовка и отступы */
-    overflow-y: auto;
+  /* flex-контейнер, чтобы центрировать Plot */
+  flex: 1;                    /* занимает всё оставшееся место */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
-/* Для блока с 3D-рендерингом */
+/* Стилизуем Plot так, чтобы он занимал почти всё пространство */
 .plot {
-    width: 100%;
-    height: 500px;
+  width: 90%;               /* оставляем по бокам небольшой отступ */
+  height: 85%;              /* займёт 85% высоты ecg-body */
+  min-height: 500px;        /* минимум, чтобы не мельчал на больших экранах */
+  border-radius: 8px;
+  background: transparent;
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .ecg-3d-container {
-        width: 95%;
-        height: 400px;
-    }
-
-    .plot {
-        height: 400px;
-    }
+  .ecg-3d-container {
+    width: 95%;
+    height: 400px;
+  }
+  .plot {
+    width: 100%;
+    height: 100%;
+    min-height: unset;
+  }
 }

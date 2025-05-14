@@ -35,8 +35,7 @@ const VECGVisualization = () => {
                             yaxis: { title: "Y" },
                             zaxis: { title: "Z" },
                         },
-                        margin: { l: 60, r: 60, t: 20, b: 40 },
-                        height: 500,
+                        margin: { l: 0, r: 0, t: 0, b: 0 },
                         plot_bgcolor: "transparent",
                         paper_bgcolor: "transparent",
                     }}
