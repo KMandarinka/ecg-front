@@ -7,49 +7,68 @@
     overflow: hidden;
 }
 
-/* Заголовок */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #ddd;
-    margin-top: 5%;
+/* HEADER */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 30px 40px;
+  background-color: transparent;
+  margin-bottom: -5px; /* добавляем минимальный отступ снизу */
+  margin-top: 80px; /* добавляем минимальный отступ снизу */
 }
 
 .breadcrumb {
-    font-size: 14px;
-    color: #555;
+  font-family: 'Podkova', serif;
+  font-size: 24px;
+  color: #007AFF;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-.contact-link {
-    font-size: 14px;
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: none;
+.breadcrumbLink:hover {
+  color: #005fcc;
+  text-decoration: underline;
 }
 
-/* Основной контейнер для двух панелей */
+.contactLink {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 20px;
+  color: #515974;
+}
+
+.contactLink:hover {
+  color: #005fcc;
+  transition: color 0.3s ease;
+  text-decoration-color: #ffffff;
+  text-decoration: underline;
+}
+
+.breadcrumbArrow {
+  margin: 0 8px;
+  vertical-align: middle;
+  color: #007AFF;
+}
+/* увеличим зазор между панелями */
 .container {
-    display: flex;
-    flex: 1; /* Занимает всё доступное пространство */
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex: 1;
+  gap: 3rem;               /* отступ между ВЭКГ и ЭКГ */
+  /* padding: сверху | справа | снизу | слева */
+  padding: 0.5rem 2rem 2rem 2rem; 
+  box-sizing: border-box;
+  min-height: 0;
 }
-
-/* Левая панель */
-.left-pane {
-    width: 50%;
-    height: 100%;
-    border-right: 1px solid #ddd;
-    box-sizing: border-box;
-}
-
-/* Правая панель */
+/* сами панели */
+.left-pane,
 .right-pane {
-    width: 50%;
-    height: 100%;
-    box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;        /* занимают всё доступное внутри container */
+  min-height: 0;       /* позволяет внутреннему overflow:hidden работать */
+  /* если нужно ещё дополнительный отступ снизу внутри панелей:
+  padding-bottom: 1rem;
+  */
 }

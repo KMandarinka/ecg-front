@@ -70,7 +70,7 @@ const ECGVisualization = () => {
       const rectW1 = metrics.width + pad * 2;
       const rectX1 = x1 - rectW1 / 2;
       const rectY = 8;
-      ctx.fillStyle = "rgba(255,255,255,0.8)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.54)";
       ctx.fillRect(rectX1, rectY, rectW1, rectH);
       ctx.fillStyle = "#007AFF";
       ctx.fillText(label, x1, rectY + pad);
@@ -81,7 +81,7 @@ const ECGVisualization = () => {
       const rectW2 = metrics.width + pad * 2;
       const rectX2 = x2 - rectW2 / 2;
       const rectY = 8;
-      ctx.fillStyle = "rgba(255,255,255,0.8)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.53)";
       ctx.fillRect(rectX2, rectY, rectW2, rectH);
       ctx.fillStyle = "#007AFF";
       ctx.fillText(label, x2, rectY + pad);

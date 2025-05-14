@@ -49,7 +49,7 @@
 /* В этой обёртке теперь оба скролла */
 .ecgScrollWrapper {
   width: 100%;
-  max-height: calc(41vh - 20px); /* чуть меньше, учитывая паддинги ecgBody */
+  max-height: calc(44vh - 20px); /* чуть меньше, учитывая паддинги ecgBody */
   overflow: auto;                  /* и по горизонтали, и по вертикали */
 }
 
