@@ -1,7 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 import ecgData from "../../assets/vecg_json.json";
-import styles from "./VECGVisualization.module.css"; // Импорт модульных стилей
+import styles from "./VECGVisualization.module.css"; 
 
 const VECGVisualization = () => {
     // Форматируем данные из JSON
@@ -9,12 +9,12 @@ const VECGVisualization = () => {
 
     return (
         <div className={styles["ecg-3d-container"]}>
-            {/* Шапка (заголовок) */}
+           
             <div className={styles["ecg-title-container"]}>
                 <h2 className={styles["ecg-title"]}>3D Визуализация сигнала ЭКГ</h2>
             </div>
 
-            {/* Основной блок с 3D графиком */}
+            
             <div className={styles["ecg-body"]}>
                 <Plot
                     data={[
