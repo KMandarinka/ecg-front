@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { FiChevronRight } from "react-icons/fi";
 import { get as idbGet } from "idb-keyval";
 
+
 const PatientPage = () => {
   const navigate = useNavigate();
 
