@@ -4,104 +4,140 @@ import "antd/dist/antd.css";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import "./ArchivePage.css";
 import { FiChevronRight } from "react-icons/fi";
-import { useNavigate } from "react-router-dom"; 
-
+import { useNavigate } from "react-router-dom";
 
 const ArchivePage = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredPatients, setFilteredPatients] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [expandedPatient, setExpandedPatient] = useState(null);
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
   const [patientFiles, setPatientFiles] = useState({});
   const [filesLoading, setFilesLoading] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  const [analyses, setAnalyses] = useState([]);
+  const [analysesLoading, setAnalysesLoading] = useState(false);
+
   const navigate = useNavigate();
 
-
+  // Русское склонение
   const russianPlural = (count, word, cases = [2, 0, 1, 1, 1, 2]) => {
     return `${count} ${word}${
       count % 100 > 4 && count % 100 < 20
-        ? 'ов'
-        : ['', 'а', 'ов'][cases[Math.min(count % 10, 5)]]
+        ? "ов"
+        : ["", "а", "ов"][cases[Math.min(count % 10, 5)]]
     }`;
   };
 
+  // Загрузка пациентов
   useEffect(() => {
     const fetchPatients = async () => {
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
-    
-        const response = await fetch("http://localhost:4000/api/v1/patients/list", {
-          method: "PUT",
-          headers: {
-            "Authorization": `${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ limit: 100, offset: 0, search: "" }),
-        });
-    
-        const data = await response.json();
+        const res = await fetch(
+          "http://localhost:4000/api/v1/patients/list",
+          {
+            method: "PUT",
+            headers: {
+              Authorization: token,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ limit: 100, offset: 0, search: "" }),
+          }
+        );
+        const data = await res.json();
         setPatients(data.patients || []);
         setFilteredPatients(data.patients || []);
-      } catch (error) {
-        console.error("Ошибка загрузки пациентов:", error);
+      } catch (e) {
+        console.error("Ошибка загрузки пациентов:", e);
       } finally {
         setLoading(false);
       }
     };
-    
     fetchPatients();
   }, []);
 
+  // Фильтр пациентов
   useEffect(() => {
-    if (searchTerm === '') {
-      setFilteredPatients(patients);
-    } else {
-      const filtered = patients.filter(patient => 
-        patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        patient.surname.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredPatients(filtered);
-    }
+    setFilteredPatients(
+      searchTerm
+        ? patients.filter((p) =>
+            `${p.name} ${p.surname}`
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase())
+          )
+        : patients
+    );
   }, [searchTerm, patients]);
 
+  // Загрузка EDF-файлов пациента
   const fetchPatientFiles = async (patientId) => {
     if (patientFiles[patientId]) return;
-    
     setFilesLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:4000/api/v1/analyse/list_edf", {
-        method: "PUT",
-        headers: {
-          "Authorization": `${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ patient_id: patientId }),
-      });
-      
-      const data = await response.json();
-      setPatientFiles(prev => ({
+      const res = await fetch(
+        "http://localhost:4000/api/v1/analyse/list_edf",
+        {
+          method: "PUT",
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ patient_id: patientId }),
+        }
+      );
+      const data = await res.json();
+      setPatientFiles((prev) => ({
         ...prev,
-        [patientId]: data.files || []
+        [patientId]: data.files || [],
       }));
-    } catch (error) {
-      console.error("Ошибка загрузки файлов пациента:", error);
+    } catch (e) {
+      console.error("Ошибка загрузки файлов пациента:", e);
     } finally {
       setFilesLoading(false);
     }
   };
 
+  // Загрузка анализов пациента
+  const fetchAnalyses = async (patientId) => {
+    setAnalysesLoading(true);
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(
+        "http://localhost:4000/api/v1/analyse/patient/list",
+        {
+          method: "PUT",
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            patient_id: patientId,
+            filter: { limit: 100, offset: 0, search: "" },
+          }),
+        }
+      );
+      const data = await res.json();
+      setAnalyses(data.analyses || []);
+    } catch (e) {
+      console.error("Ошибка загрузки анализов:", e);
+    } finally {
+      setAnalysesLoading(false);
+    }
+  };
+
+  // Клик по пациенту
   const handlePatientClick = (patientId) => {
-    if (expandedPatient === patientId) {
-      setExpandedPatient(null);
-      setSelectedPatient(null);
-    } else {
-      setExpandedPatient(patientId);
-      setSelectedPatient(patientId);
-      fetchPatientFiles(patientId);
+    const newSel = patientId === selectedPatient ? null : patientId;
+    setSelectedPatient(newSel);
+    setExpandedPatient(newSel);
+    if (newSel) {
+      fetchPatientFiles(newSel);
+      fetchAnalyses(newSel);
     }
   };
 
@@ -109,15 +145,19 @@ const ArchivePage = () => {
     <div className="archive-page-container">
       <AppHeader />
       <div className="header-container">
-      <span className="breadcrumb">
-        <span onClick={() => navigate("/main")} className="breadcrumb-link">
-          Главная
+        <span className="breadcrumb">
+          <span
+            onClick={() => navigate("/main")}
+            className="breadcrumb-link"
+          >
+            Главная
+          </span>
+          <FiChevronRight className="breadcrumb-arrow" />
+          <span>Архив анализов</span>
         </span>
-        <FiChevronRight className="breadcrumb-arrow" />
-        <span>Архив анализов</span>
-      </span>
-
-        <span className="contact-link">Остались вопросы? Напишите нам</span>
+        <span className="contact-link">
+          Остались вопросы? Напишите нам
+        </span>
       </div>
 
       <div className="archive-content">
@@ -133,11 +173,9 @@ const ArchivePage = () => {
           />
         </div>
 
-        <div className="search-result-container">
-          <p className="search-result">
-            Найдено {russianPlural(filteredPatients.length, 'пациент')}
-          </p>
-        </div>
+        <p className="search-result">
+          Найдено {russianPlural(filteredPatients.length, "пациент")}
+        </p>
 
         {loading ? (
           <div className="spinner-container">
@@ -146,49 +184,82 @@ const ArchivePage = () => {
         ) : (
           <div className="patients-list-container">
             <List
-              itemLayout="vertical"
               dataSource={filteredPatients}
               renderItem={(patient) => (
-                <div 
-                  className={`patient-item-container ${selectedPatient === patient.id ? 'selected' : ''}`}
+                <div
+                  className={`patient-item-container ${
+                    selectedPatient === patient.id ? "selected" : ""
+                  }`}
                   onClick={() => handlePatientClick(patient.id)}
                 >
                   <div className="patient-item">
                     <div className="patient-info">
-                      <p className="patient-text"><strong>Имя:</strong> {patient.name}</p>
-                      <p className="patient-text"><strong>Фамилия:</strong> {patient.surname}</p>
-                      <p className="patient-text"><strong>Дата рождения:</strong> {new Date(patient.birthday).toLocaleDateString('ru-RU')}</p>
+                      <p>
+                        <strong>Имя:</strong> {patient.name}
+                      </p>
+                      <p>
+                        <strong>Фамилия:</strong> {patient.surname}
+                      </p>
+                      <p>
+                        <strong>Дата рождения:</strong>{" "}
+                        {new Date(patient.birthday).toLocaleDateString(
+                          "ru-RU"
+                        )}
+                      </p>
                     </div>
-                    <div className={`patient-indicator ${selectedPatient === patient.id ? 'expanded' : ''}`}>
-                      {selectedPatient === patient.id ? '▼' : '►'}
+                    <div
+                      className={`patient-indicator ${
+                        selectedPatient === patient.id ? "expanded" : ""
+                      }`}
+                    >
+                      {selectedPatient === patient.id ? "▼" : "►"}
                     </div>
                   </div>
-                  
+
                   {expandedPatient === patient.id && (
                     <div className="files-container">
-                      {filesLoading ? (
+                      {(filesLoading || analysesLoading) ? (
                         <div className="files-loading">
                           <Spin size="small" />
                         </div>
                       ) : (
-                        <div className="files-list">
-                          {patientFiles[patient.id]?.length > 0 ? (
-                            <List
-                              dataSource={patientFiles[patient.id]}
-                              renderItem={(file) => (
-                                <List.Item className="file-item">
-                                  <div>
-                                    <p><strong>Файл:</strong> {file.filename}</p>
-                                    <p><strong>Размер:</strong> {Math.round(file.size / 1024)} KB</p>
-                                    <p><strong>Дата создания:</strong> {new Date(file.created_at).toLocaleString('ru-RU')}</p>
-                                  </div>
-                                </List.Item>
-                              )}
-                            />
-                          ) : (
-                            <p className="no-files">Нет файлов для этого пациента</p>
-                          )}
-                        </div>
+                        <List
+                          dataSource={patientFiles[patient.id] || []}
+                          renderItem={(file) => {
+                            const analysis = analyses.find(
+                              (a) => a.file_id === file.id
+                            );
+                            return (
+                              <List.Item className="file-item">
+                                <div className="file-info">
+                                  <p>
+                                    <strong>Файл:</strong> {file.filename}
+                                  </p>
+                                  <p>
+                                    <strong>Размер:</strong>{" "}
+                                    {Math.round(file.size / 1024)} KB
+                                  </p>
+                                  <p>
+                                    <strong>Дата создания:</strong>{" "}
+                                    {new Date(
+                                      file.created_at
+                                    ).toLocaleString("ru-RU")}
+                                  </p>
+                                </div>
+                                <div className="file-results">
+                                  <p>
+                                    <strong>Результат:</strong>{" "}
+                                    {analysis?.result ?? "—"}
+                                  </p>
+                                  <p>
+                                    <strong>Предсказание:</strong>{" "}
+                                    {analysis?.predict ?? "—"}
+                                  </p>
+                                </div>
+                              </List.Item>
+                            );
+                          }}
+                        />
                       )}
                     </div>
                   )}

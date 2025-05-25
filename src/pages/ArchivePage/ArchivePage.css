@@ -54,6 +54,7 @@
 
 .patient-info {
   width: 100%;
+  font-size: 18px;
   text-align: left;
 }
 
@@ -191,4 +192,35 @@
   outline: none;
   border-color: #007AFF;
   box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
+}
+
+.file-item {
+  display: flex;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.file-info,
+.file-results {
+  flex: 1;
+}
+
+.file-info p,
+.file-results p {
+  font-size: 18px;
+  margin: 8px 0;    /* чтобы отступы были как в .patient-text */
+}
+
+/* Немного стили для случая, когда результатов нет */
+.no-results {
+  color: #999;
+  font-style: italic;
+}
+
+.file-results p strong {
+  margin-right: 20px; /* подберите нужное значение */
 }
