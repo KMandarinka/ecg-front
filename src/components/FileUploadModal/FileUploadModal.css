@@ -125,3 +125,26 @@
   border-radius: 10px; /* Закругление углов */
   
 }
+
+.file-info-relative {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.file-name-centered {
+  display: block;
+  font-size: 20px;
+  word-break: break-word;
+}
+
+.remove-file-abs {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  background: none;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+}

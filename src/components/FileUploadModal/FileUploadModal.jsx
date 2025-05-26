@@ -39,15 +39,14 @@ const FileUploadModal = ({ onFileUpload }) => {  // Передаём onFileUploa
         />
         <label htmlFor="file-input" className="upload-label">
           {file ? (
-            <div className="file-info">
-              <span className="file-name">{file.name}</span>
-              <button className="remove-file" onClick={handleFileRemove}>
-                ❌
-              </button>
+            <div className="file-info-relative">
+              <span className="file-name-centered">{file.name}</span>
+              <button className="remove-file-abs" onClick={handleFileRemove}>❌</button>
             </div>
           ) : (
             <span className="upload-text">Выберите файл</span>
           )}
+
         </label>
       </div>
       <button
