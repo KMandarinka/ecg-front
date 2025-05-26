@@ -35,7 +35,6 @@ const AppHeader = () => {
         {/* Правая часть - элементы */}
         <div className="right-section">
           <div className="user-home-group">
-            <span className="username">Katesss</span>
             <HomeIcon className="iconn" />
           </div>
           <NotificationIcon className="icon" />
