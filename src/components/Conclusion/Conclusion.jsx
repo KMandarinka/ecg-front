@@ -53,7 +53,7 @@ const Conclusion = ({ fileId, name }) => {
   if (error)   return <div className={styles.error}>Ошибка: {error}</div>;
   if (!analysis) return <div className={styles.error}>Анализ не найден</div>;
 
-  // Форматируем значения до 3 знаков после запятой
+  // Форматируем predict до 3 знаков после запятой
   const formattedPredict =
     typeof analysis.predict === 'string'
       ? parseFloat(analysis.predict).toFixed(3)
@@ -61,12 +61,14 @@ const Conclusion = ({ fileId, name }) => {
       ? analysis.predict.toFixed(3)
       : '—';
 
-  const formattedResult =
-    typeof analysis.result === 'number'
-      ? analysis.result.toFixed(3)
-      : !isNaN(parseFloat(analysis.result))
-      ? parseFloat(analysis.result).toFixed(3)
-      : '—';
+  // Функция для отображения текста в зависимости от кода result
+  const renderResultText = (res) => {
+    if (res === 1 || res === '1') return 'Есть заболевание';
+    if (res === 2 || res === '2') return 'Нет заболевания';
+    // если другие значения — показываем число с форматированием
+    const num = typeof res === 'number' ? res : parseFloat(res);
+    return !isNaN(num) ? num.toFixed(3) : '—';
+  };
 
   return (
     <div className={styles['conclusion-container']}>
@@ -81,7 +83,9 @@ const Conclusion = ({ fileId, name }) => {
         </div>
         <div className={styles['conclusion-field']}>
           <span className={styles['conclusion-label']}>Result:</span>
-          <span className={styles['conclusion-value']}>{formattedResult}</span>
+          <span className={styles['conclusion-value']}>
+            {renderResultText(analysis.result)}
+          </span>
         </div>
       </div>
     </div>

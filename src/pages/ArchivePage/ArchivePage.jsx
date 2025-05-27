@@ -8,6 +8,18 @@ import { useNavigate } from "react-router-dom";
 import { set as idbSet } from 'idb-keyval';
 
 const ArchivePage = () => {
+  // Функция для отображения текста диагноза
+  const getDiagnosisLabel = (code) => {
+    switch (code) {
+      case 1:
+        return "Есть заболевание";
+      case 2:
+        return "Нет заболевания";
+      default:
+        return String(code);
+    }
+  };
+
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredPatients, setFilteredPatients] = useState([]);
@@ -200,8 +212,8 @@ const ArchivePage = () => {
                                   <p><strong>Дата анализа:</strong> {new Date(file.created_at).toLocaleString("ru-RU")}</p>
                                 </div>
                                 <div className="file-results">
-                                  <p><strong>Результат:</strong> {result}</p>
-                                  <p><strong>Предсказание:</strong> {predict}</p>
+                                  <p><strong>Результат:</strong> {getDiagnosisLabel(result)}</p>
+                                  <p><strong>Предсказание:</strong> {getDiagnosisLabel(predict)}</p>
                                 </div>
                                 <div className="file-action">
                                   <button className="analyse-button" onClick={() => handleAnalyseClick(patient, file)}>Посмотреть анализ</button>
