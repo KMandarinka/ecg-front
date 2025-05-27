@@ -13,6 +13,9 @@ const SelectPatientPage = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const [patientIdState, setPatientIdState] = useState("");
+  const [fileId, setFileId] = useState("");
+
 
   const russianPlural = (count, word, cases = [2, 0, 1, 1, 1, 2]) =>
   `${count} ${word}${
@@ -112,16 +115,21 @@ const SelectPatientPage = () => {
 
       const files = JSON.parse(text);
       const meta = Array.isArray(files) && files.length > 0 ? files[0] : null;
+      setFileId(meta.id); // <-- сохраняем fileId
+      setPatientIdState(meta.patient_id); // <-- сохраняем patientId
       if (!meta) {
         throw new Error("Сервер вернул пустой массив метаданных");
       }
 
-      const { filename = "—", data: rawData } = meta;
+      const { id, patient_id, filename = "—", data: rawData } = meta;
 
       // Парсим вложенную строку data
       let parsedAll;
       try {
         parsedAll = JSON.parse(rawData);
+        console.log(files);
+        console.log('robot');
+        
       } catch (e) {
         console.error("Не удалось распарсить meta.data:", e);
         throw new Error("Неверный формат данных ЭКГ от сервера");
@@ -162,8 +170,14 @@ const SelectPatientPage = () => {
 
       // Навигация со state, чтобы сразу передать каналы и вектор
       navigate("/patient", {
-        state: { ecgChannels, vecg },
+        state: {
+          ecgChannels,
+          vecg,
+          fileId: id,
+          patientId: patient_id,
+        },
       });
+
     } catch (err) {
       console.error("[SelectPatientPage] handlePatientClick error:", err);
       alert(err.message || "Ошибка при отправке файла");
@@ -211,7 +225,7 @@ const SelectPatientPage = () => {
             }
             className={styles.createButton}
           >
-            <FiUserPlus className={styles.icon} /> Создать пациента
+            <FiUserPlus className={styles.icon} /> Добавить пациента
           </button>
         </div>
 

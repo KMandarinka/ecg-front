@@ -5,43 +5,53 @@ import SignalInfo from '../../components/SignalInfo/SignalInfo';
 import Conclusion from '../../components/Conclusion/Conclusion';
 import styles from './PatientPage.module.css';
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FiChevronRight } from "react-icons/fi";
 import { get as idbGet } from "idb-keyval";
 
 
 const PatientPage = () => {
+  
   const navigate = useNavigate();
+  const location = useLocation();
+  const { fileId, patientId } = location.state || {};
+  console.log("Передача");
+  console.log("fileId:", fileId);
+  console.log("patientId:", patientId);
+
 
   // Сохраняем пациентские данные из localStorage
   const name = localStorage.getItem("patientName") || "";
   const birthday = localStorage.getItem("patientBirthday") || "";
   const patient = { name, birthday };
+  
 
   // Локальный стейт для ЭКГ
   const [ecgData, setEcgData] = useState(null);
   const [ecgLoading, setEcgLoading] = useState(true);
 
   useEffect(() => {
-    (async () => {
-      try {
-        // Получаем данные ЭКГ из IndexedDB
-        const stored = await idbGet("ecgData");
-        if (stored) {
-          // Если в IndexedDB лежит строка, парсим её, иначе считаем уже объектом
-          const parsed = typeof stored === "string" ? JSON.parse(stored) : stored;
-          console.log("[PatientPage] Loaded ECG from IndexedDB:", parsed);
-          setEcgData(parsed);
-        } else {
-          console.warn("[PatientPage] No ECG found in IndexedDB");
-        }
-      } catch (err) {
-        console.error("[PatientPage] Error reading ECG from IndexedDB:", err);
-      } finally {
-        setEcgLoading(false);
+  (async () => {
+    try {
+      const stored = await idbGet("ecgData");
+
+      if (stored) {
+        const parsed = typeof stored === "string" ? JSON.parse(stored) : stored;
+
+        console.log("[PatientPage] Loaded ECG from IndexedDB:", parsed);
+
+        setEcgData(parsed);
+      } else {
+        console.warn("[PatientPage] No ECG found in IndexedDB");
       }
-    })();
-  }, []);
+    } catch (err) {
+      console.error("[PatientPage] Error reading ECG from IndexedDB:", err);
+    } finally {
+      setEcgLoading(false);
+    }
+  })();
+}, []);
+
 
   return (
     <div className={styles["patient-page"]}>
@@ -61,7 +71,9 @@ const PatientPage = () => {
         <div className={styles["content-container"]}>
           <div className={styles["left-column"]}>
             <PatientInfo patient={patient} />
-            <Conclusion predict="Нормальный синусовый ритм" result="Без патологий" />
+            <Conclusion fileId={fileId} patientId={patientId} />
+
+
           </div>
           <div className={styles["right-column"]}>
             <div className={styles["ecg-wrapper"]}>
